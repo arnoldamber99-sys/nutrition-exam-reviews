@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NUTR 2351 | Chapter 10 Study Guide</title>
+<style>
+:root{--green:#124b3b;--gold:#d5ab43;--ink:#20352e;--soft:#f3f7f4;--line:#d9e4dd}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f7f5;color:var(--ink);font:16px/1.6 Arial,sans-serif}
+header{background:linear-gradient(110deg,#104333,#236c52);color:white;padding:34px 28px}
+header small{color:var(--gold);font-weight:bold;letter-spacing:2px}
+h1{font-size:clamp(27px,4vw,43px);line-height:1.2;margin:15px 0}
+h2{font-size:26px;line-height:1.3}
+h3{font-size:19px}
+.progress{max-width:850px;margin-top:20px}
+.track{height:12px;background:#dce8df;border-radius:20px;overflow:hidden}
+#bar{height:100%;width:0;background:var(--gold);transition:.3s}
+.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:25px;padding:26px;max-width:1450px;margin:auto}
+nav{display:flex;flex-direction:column;gap:9px;align-self:start;position:sticky;top:12px}
+nav button,.controls button{border:1px solid var(--line);background:white;color:var(--ink);padding:14px;text-align:left;border-radius:11px;font-weight:bold;cursor:pointer}
+nav button.active{background:var(--green);color:white}
+main{min-width:0}
+.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:28px;margin-bottom:22px}
+.pill{display:inline-block;background:#e6f1ea;color:var(--green);font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px;padding:5px 11px;border-radius:20px}
+.lesson{border-left:4px solid var(--gold);padding:2px 18px;margin:20px 0;background:#fafcf9}
+.lesson h3{margin-bottom:5px}
+.lesson p{margin-top:5px}
+.note{background:var(--soft);border-radius:12px;padding:17px;margin:20px 0}
+.question{border-top:1px solid var(--line);padding:23px 0}
+.question strong{display:block;margin:12px 0;font-size:17px}
+.option{display:block;width:100%;padding:12px 15px;margin:8px 0;text-align:left;background:#fff;border:1px solid #d4ded7;border-radius:9px;cursor:pointer;font-size:15px;color:var(--ink)}
+.option:hover{background:#edf5ef}
+.option.correct{border:2px solid #237c54;background:#e9f7ed}
+.option.wrong{border:2px solid #ba5b4e;background:#fff0ed}
+.feedback{background:var(--soft);padding:14px;border-radius:9px;margin-top:10px}
+.flashgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.flash{background:#f4f8f5;border:1px solid var(--line);padding:20px;border-radius:12px;text-align:left;min-height:135px;cursor:pointer;color:var(--ink)}
+.flash strong{display:block;margin-bottom:10px}
+.flash.flipped{background:#fff7e6;border-color:var(--gold)}
+.matchrow{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin:12px 0;align-items:center}
+select{width:100%;padding:11px;border:1px solid var(--line);border-radius:8px;background:white;font-size:14px}
+.controls{display:flex;justify-content:space-between;gap:12px;margin:20px 0}
+.controls button{background:var(--green);color:white;text-align:center}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}
+th{background:#e9f2eb}
+.tablewrap{overflow-x:auto}
+.muted{color:#596c62}
+@media(max-width:760px){.layout{grid-template-columns:1fr;padding:12px}nav{position:static;display:grid;grid-template-columns:1fr 1fr}nav button{font-size:12px;padding:10px}.panel{padding:18px}.matchrow{grid-template-columns:1fr}header{padding:25px 18px}}
+</style>
+</head>
+<body>
+<header>
+<small>BAYLOR UNIVERSITY · NUTR 2351 · EXAM 3</small>
+<h1>Chapter 10: Water-Soluble Vitamins</h1>
+<p>Explore, retrieve, apply, and check your understanding. This review supports exam preparation without reproducing previous exam questions.</p>
+<div class="progress">
+<div id="progressText">0 of 52 challenges correct</div>
+<div class="track"><div id="bar"></div></div>
+</div>
+</header>
+<div class="layout">
+<nav id="nav"></nav>
+<main>
+<div id="content"></div>
+<div class="controls">
+<button id="previous">← Previous section</button>
+<button id="next">Next section →</button>
+</div>
+</main>
+</div>
+<script>
+"use strict";
+const sections=[
+["Start here"],
+["Foundations",
+["Water-soluble vitamins","The B-complex vitamins and vitamin C are classified as water-soluble. Many participate in metabolism as coenzymes or cofactors. They do not provide calories."],
+["Absorption and storage","Most water-soluble vitamins have limited storage compared with fat-soluble vitamins. Vitamin B12 is an important exception because substantial stores can be maintained in the liver."],
+["Food preparation","Water-soluble vitamins can be lost through cooking water and some are sensitive to heat or light. Shorter cooking times and less water can help conserve them."],
+["Supplement safety","Water-soluble does not mean harmless. Excess supplemental vitamin B6 may cause neuropathy, and high-dose niacin can produce adverse effects."]],
+["B1, B2, B3",
+["Thiamin (B1)","Thiamin pyrophosphate (TPP) participates in carbohydrate metabolism and oxidative decarboxylation. Severe deficiency can cause beriberi or Wernicke encephalopathy."],
+["Riboflavin (B2)","Riboflavin forms FMN and FAD, coenzymes involved in oxidation-reduction reactions. Deficiency may produce glossitis or cheilosis. Excess riboflavin may make urine bright yellow."],
+["Niacin (B3)","Niacin forms NAD and NADP, which transfer electrons in metabolic reactions. Severe deficiency causes pellagra, classically associated with dermatitis, diarrhea, and dementia."],
+["The TCA cycle","NAD from niacin and FAD from riboflavin are major redox coenzymes used in energy metabolism. Thiamin also supports important related enzyme reactions."]],
+["B5, B6, B7",
+["Pantothenic acid (B5)","Pantothenic acid is a component of coenzyme A, which carries acyl groups in metabolic reactions."],
+["Vitamin B6","Pyridoxal phosphate (PLP) supports amino acid metabolism, including transamination and synthesis of many nonessential amino acids. Chronic excessive supplemental intake can cause sensory neuropathy."],
+["Biotin (B7)","Biotin is a cofactor for carboxylase enzymes. Avidin in raw egg whites binds biotin. High-dose biotin supplements may interfere with certain laboratory tests."]],
+["B9 and B12",
+["Folate (B9)","Folate coenzymes transfer one-carbon units needed for nucleotide and DNA synthesis. Adequate folate before and during early pregnancy supports neural tube development."],
+["Vitamin B12","Vitamin B12 is involved in neurologic function and metabolic reactions associated with DNA synthesis. Normal absorption requires intrinsic factor and a functioning terminal ileum."],
+["Distinguishing deficiencies","Both folate and B12 deficiencies can cause megaloblastic anemia. B12 deficiency can also cause neurologic injury. High folic acid intake may improve anemia without treating B12-related neurologic damage."],
+["Clinical clues","Pernicious anemia is associated with impaired intrinsic factor-dependent B12 absorption. Elevated methylmalonic acid is a useful marker of B12 deficiency."]],
+["Vitamin C",
+["Collagen","Vitamin C supports hydroxylation reactions needed for stable collagen. Deficiency causes scurvy, with findings such as bleeding gums and impaired wound healing."],
+["Iron absorption","Vitamin C enhances absorption of nonheme iron, particularly by helping maintain iron in a reduced form."],
+["Antioxidant activity","Vitamin C acts as an antioxidant and can help regenerate oxidized vitamin E."],
+["Food and safety","Fruits and vegetables such as strawberries, citrus fruits, and bell peppers supply vitamin C. Large supplemental doses can cause gastrointestinal upset and diarrhea."]],
+["Matching lab"],
+["Mastery challenge"]
+];
+const questions=[
+[1,"Basics","Which statement best describes water-soluble vitamins?",["They all provide energy","They often serve as coenzyme precursors","They are stored exclusively in adipose tissue","They never cause toxicity"],1,"Many B vitamins form coenzymes used in metabolism."],
+[1,"Energy","Why do B vitamins support energy metabolism without supplying calories?",["They directly become ATP","They replace dietary protein","They help enzymes process energy-yielding nutrients","They contain glucose"],2,"Vitamins facilitate metabolic reactions but do not supply calories."],
+[1,"Storage","Which water-soluble vitamin can be stored in substantial amounts in the liver?",["Vitamin C","Vitamin B12","Thiamin","Riboflavin"],1,"B12 is an important exception to the general limited-storage pattern."],
+[1,"Cooking","Which method generally helps conserve water-soluble vitamins?",["Long boiling and discarding liquid","Cooking with less water for less time","Leaving chopped vegetables in sunlight","Repeated reheating"],1,"Less water and shorter exposure can reduce losses."],
+[1,"Safety","Which statement about supplements is accurate?",["All are harmless","All are preapproved by FDA for effectiveness","High doses of some water-soluble vitamins can cause harm","Higher doses always improve health"],2,"Water solubility does not eliminate toxicity risk."],
+[1,"Diet","Which pattern offers a broad range of water-soluble vitamins?",["Only fats","Varied fruits, vegetables, grains, legumes, and protein foods","Only refined sugar","Avoiding all fortified foods"],1,"Varied food groups contribute complementary nutrients."],
+[2,"B1","Which coenzyme is derived from thiamin?",["TPP","FAD","NAD","CoA"],0,"Thiamin forms thiamin pyrophosphate."],
+[2,"B1","Beriberi is associated with deficiency of:",["Niacin","Thiamin","Biotin","Vitamin C"],1,"Beriberi is a severe thiamin deficiency syndrome."],
+[2,"B1","Confusion, gait disturbance, and abnormal eye movements in severe alcohol use disorder raise concern for:",["Scurvy","Pellagra","Wernicke encephalopathy","Rickets"],2,"Wernicke encephalopathy is linked to thiamin deficiency and requires urgent care."],
+[2,"B2","FMN and FAD are derived from:",["Riboflavin","Folate","Vitamin B6","Pantothenic acid"],0,"Riboflavin supplies these redox coenzymes."],
+[2,"B2","Bright yellow urine after a multivitamin is commonly associated with:",["Vitamin B12","Riboflavin","Folate","Vitamin C"],1,"Excreted riboflavin can produce bright yellow urine."],
+[2,"B2","Glossitis and cheilosis can be clinical findings of:",["Riboflavin deficiency","Vitamin D excess","Vitamin K deficiency","Excess vitamin C"],0,"These mucosal changes may occur with inadequate riboflavin."],
+[2,"B3","NAD and NADP are derived from:",["Thiamin","Biotin","Niacin","Vitamin C"],2,"Niacin is the precursor for NAD and NADP."],
+[2,"B3","Dermatitis, diarrhea, and dementia suggest:",["Scurvy","Pellagra","Beriberi","Pernicious anemia"],1,"Pellagra is the characteristic severe niacin deficiency syndrome."],
+[2,"TCA","Which vitamins supply major redox coenzymes used in the TCA cycle?",["Folate and vitamin C","Riboflavin and niacin","Biotin and vitamin K","Vitamin A and vitamin D"],1,"FAD comes from B2 and NAD comes from B3."],
+[2,"B3 safety","High supplemental niacin intake can cause:",["Flushing and other adverse effects","Scurvy","Intrinsic factor deficiency","Beriberi"],0,"Pharmacologic niacin doses can cause adverse effects."],
+[3,"B5","Which vitamin is part of coenzyme A?",["Pantothenic acid","Folate","Riboflavin","Vitamin C"],0,"Pantothenic acid is a component of CoA."],
+[3,"B5","Coenzyme A is particularly involved in:",["Acyl-group transfer","Vision in rod cells","Blood coagulation","Calcium absorption"],0,"CoA carries acyl groups, including acetyl groups."],
+[3,"B6","The active coenzyme form of vitamin B6 is:",["PLP","NAD","FAD","TPP"],0,"Pyridoxal phosphate is the active B6 coenzyme."],
+[3,"B6","Vitamin B6 is especially important for:",["Amino acid transamination","Production of intrinsic factor","Absorption of fat-soluble vitamins","Activation of vitamin D in skin"],0,"PLP supports transamination and other amino acid reactions."],
+[3,"B6","Why can B6 deficiency impair synthesis of many nonessential amino acids?",["It prevents all digestion","It impairs transamination reactions","It destroys amino acids in food","It removes dietary nitrogen"],1,"B6-dependent enzymes support amino acid interconversion."],
+[3,"B6 safety","Chronic excessive supplemental B6 can cause:",["Sensory neuropathy","Scurvy","Pellagra","Rickets"],0,"Excess supplemental B6 can damage peripheral nerves."],
+[3,"B7","Biotin serves as a cofactor for:",["Carboxylases","Intrinsic factor","Rhodopsin","Clotting factors"],0,"Biotin is associated with carboxylation reactions."],
+[3,"B7","Large amounts of raw egg whites can reduce biotin availability because:",["Avidin binds biotin","Egg white destroys folate","Protein removes vitamin C","Biotin becomes fat-soluble"],0,"Avidin binds biotin and limits its availability."],
+[3,"B7 safety","High-dose biotin may interfere with:",["Certain laboratory immunoassays","All blood draws","Every urine test","Vitamin C digestion"],0,"Some immunoassays are susceptible to biotin interference."],
+[4,"B9","Folate is especially important for:",["One-carbon transfer and DNA synthesis","Formation of FAD","Collagen hydroxylation","Production of bile"],0,"Folate supports nucleotide synthesis."],
+[4,"Pregnancy","Adequate folate before and early in pregnancy supports:",["Neural tube development","Prevention of every genetic disorder","Elimination of iron requirements","Production of intrinsic factor"],0,"Folate status is important during neural tube closure."],
+[4,"B12 absorption","Normal vitamin B12 absorption requires:",["Intrinsic factor and terminal ileum","Only the colon","Only vitamin C","Only bile salts"],0,"Intrinsic factor facilitates uptake of B12 in the terminal ileum."],
+[4,"B12","Pernicious anemia increases risk of:",["Vitamin B12 deficiency","Vitamin C excess","Niacin toxicity","Vitamin K deficiency"],0,"Pernicious anemia impairs intrinsic factor-dependent B12 absorption."],
+[4,"Comparison","Which finding particularly suggests B12 rather than isolated folate deficiency?",["Neurologic dysfunction","Megaloblastic anemia","Fatigue","Elevated homocysteine"],0,"B12 deficiency can cause neurologic injury."],
+[4,"Clinical","High folic acid intake may complicate recognition of B12 deficiency because it can:",["Improve anemia without treating neurologic injury","Destroy intrinsic factor","Cause pellagra","Eliminate B12 requirements"],0,"Hematologic improvement may mask ongoing neurologic damage."],
+[4,"Marker","Which marker is more specific for B12 deficiency than folate deficiency?",["Elevated methylmalonic acid","Elevated glucose","Low sodium","High triglycerides"],0,"Methylmalonic acid often rises in B12 deficiency."],
+[4,"Food","Which is a natural dietary source of B12?",["Fish","Unfortified apple juice","Carrots","White rice"],0,"B12 occurs naturally in animal-derived foods."],
+[5,"Vitamin C","Vitamin C supports:",["Collagen synthesis","Rhodopsin formation","Intrinsic factor production","Vitamin K recycling"],0,"Vitamin C supports collagen hydroxylation."],
+[5,"Deficiency","Bleeding gums and impaired wound healing suggest:",["Scurvy","Pellagra","Beriberi","Rickets"],0,"Scurvy results from severe vitamin C deficiency."],
+[5,"Iron","Vitamin C enhances absorption of:",["Nonheme iron","Only heme iron","Stored ferritin","No dietary iron"],0,"Vitamin C improves nonheme iron absorption."],
+[5,"Antioxidants","Which vitamin helps regenerate oxidized vitamin E?",["Vitamin C","Thiamin","Biotin","Folate"],0,"Vitamin C can help regenerate vitamin E after antioxidant activity."],
+[5,"Food","Which snack provides vitamin C?",["Strawberries and red bell pepper","Butter and crackers","White rice and oil","Cheese only"],0,"Many fruits and vegetables are vitamin C sources."],
+[5,"Excess","Large supplemental doses of vitamin C may cause:",["Gastrointestinal upset and diarrhea","Pellagra","Beriberi","Intrinsic factor deficiency"],0,"High doses may produce osmotic gastrointestinal effects."],
+[7,"Integration","A patient has megaloblastic anemia and tingling in the feet. Which vitamin is a particular concern?",["Vitamin B12","Vitamin C","B5","B2"],0,"Neurologic findings together with megaloblastic anemia suggest B12 deficiency."],
+[7,"Integration","Which vitamin-coenzyme pair is correct?",["B6–PLP","B2–CoA","B5–FAD","B1–NAD"],0,"PLP is the active coenzyme form of B6."],
+[7,"Integration","A person taking high-dose supplements develops numbness and gait difficulty. Which vitamin may be responsible?",["Vitamin B6","Vitamin C from fruit","Thiamin from grains","Riboflavin from milk"],0,"Excess supplemental B6 can cause sensory neuropathy."],
+[7,"Integration","A patient with chronic alcohol misuse develops acute confusion and difficulty walking. Which nutrient needs urgent attention?",["Thiamin","Biotin","Vitamin C","Niacin"],0,"Wernicke encephalopathy related to thiamin deficiency requires prompt attention."],
+[7,"Integration","Which pairing correctly identifies a vitamin and its deficiency syndrome?",["Niacin–pellagra","Vitamin C–beriberi","Thiamin–scurvy","B12–rickets"],0,"Severe niacin deficiency causes pellagra."]
+];
+const matches=[
+["Vitamin and coenzyme",[
+["Thiamin (B1)","TPP"],
+["Riboflavin (B2)","FAD and FMN"],
+["Niacin (B3)","NAD and NADP"],
+["Pantothenic acid (B5)","Coenzyme A"]
+]],
+["Clinical clue and deficiency",[
+["Pellagra","Niacin"],
+["Wernicke encephalopathy","Thiamin"],
+["Scurvy","Vitamin C"],
+["Megaloblastic anemia with neurologic injury","Vitamin B12"]
+]]
+];
+const key="nutr2351-ch10-rebuilt-v1";
+let state;
+try{state=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){state={}}
+state.answers ||= {};
+state.matches ||= {};
+state.flips ||= {};
+let page=0;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}}
+function score(){
+let n=0;
+questions.forEach((q,i)=>{if(state.answers[i]===q[4])n++});
+matches.forEach((set,i)=>set[1].forEach((pair,j)=>{
+if(state.matches[i+"-"+j]===pair[1])n++;
+}));
+return n;
+}
+function progress(){
+const n=score();
+$("progressText").textContent=n+" of 52 challenges correct ("+Math.round(n/52*100)+"%)";
+$("bar").style.width=(n/52*100)+"%";
+}
+function quiz(q,i){
+const chosen=state.answers[i],answered=Number.isInteger(chosen);
+return `<div class="question">
+<span class="pill">${esc(q[1])}</span>
+<strong>${esc(q[2])}</strong>
+${q[3].map((choice,j)=>`<button class="option ${answered&&j===q[4]?"correct":""} ${answered&&j===chosen&&chosen!==q[4]?"wrong":""}" data-q="${i}" data-choice="${j}">${"ABCD"[j]}. ${esc(choice)}</button>`).join("")}
+${answered?`<div class="feedback"><b>${chosen===q[4]?"Correct!":"Not quite. Try again."}</b><div>${esc(q[5])}</div></div>`:""}
+</div>`;
+}
+function practice(section){
+return questions.map((q,i)=>({q,i})).filter(x=>x.q[0]===section).map(x=>quiz(x.q,x.i)).join("");
+}
+function overview(){
+return `<div class="panel">
+<span class="pill">Welcome</span>
+<h2>Your interactive exam review</h2>
+<p>This guide covers Pearson Chapter 10: <b>Water-Soluble Vitamins</b>, including the B-complex vitamins and vitamin C. Work through the lessons, practice questions, matching activities, and cumulative mastery challenge.</p>
+<div class="note"><b>How to study:</b> First review the concepts. Then attempt each question before checking the feedback. You can change your answers at any time. Progress is saved in this browser but is not submitted to Canvas.</div>
+<h3>Water-soluble vitamins at a glance</h3>
+<div class="tablewrap"><table><thead><tr><th>Vitamin</th><th>Principal role</th><th>Clinical clue</th></tr></thead><tbody>
+<tr><td>B1</td><td>TPP; energy metabolism</td><td>Beriberi, Wernicke encephalopathy</td></tr>
+<tr><td>B2</td><td>FAD/FMN; redox reactions</td><td>Glossitis, cheilosis</td></tr>
+<tr><td>B3</td><td>NAD/NADP; redox reactions</td><td>Pellagra</td></tr>
+<tr><td>B5</td><td>Coenzyme A</td><td>Deficiency uncommon</td></tr>
+<tr><td>B6</td><td>PLP; amino acid metabolism</td><td>Neurologic effects</td></tr>
+<tr><td>B7</td><td>Carboxylase cofactor</td><td>Deficiency uncommon</td></tr>
+<tr><td>B9</td><td>One-carbon transfer</td><td>Megaloblastic anemia</td></tr>
+<tr><td>B12</td><td>Neurologic and metabolic functions</td><td>Anemia, neuropathy</td></tr>
+<tr><td>C</td><td>Collagen, antioxidants, iron absorption</td><td>Scurvy</td></tr>
+</tbody></table></div></div>`;
+}
+function lesson(section){
+const s=sections[section];
+let html=`<div class="panel"><span class="pill">Chapter 10 · Section ${section}</span><h2>${esc(s[0])}</h2><p class="muted">Review each concept before answering the practice questions.</p>`;
+s.slice(1).forEach(item=>{
+html+=`<div class="lesson"><h3>${esc(item[0])}</h3><p>${esc(item[1])}</p></div>`;
+});
+html+=`</div><div class="panel"><span class="pill">Active recall</span><h3>Check your understanding</h3><p class="muted">Choose an answer to receive immediate feedback. You can retry any question.</p>${practice(section)}</div>`;
+return html;
+}
+function matching(){
+let html=`<div class="panel"><span class="pill">Matching lab</span><h2>Make the connections</h2><p>Match each vitamin or clinical clue with its correct explanation.</p>`;
+matches.forEach((set,i)=>{
+html+=`<h3>${esc(set[0])}</h3>`;
+set[1].forEach((pair,j)=>{
+const v=state.matches[i+"-"+j]||"";
+html+=`<div class="matchrow"><b>${esc(pair[0])}</b><select data-match="${i}-${j}"><option value="">Choose a match...</option>`;
+set[1].forEach(other=>{
+html+=`<option value="${esc(other[1])}" ${v===other[1]?"selected":""}>${esc(other[1])}</option>`;
+});
+html+=`</select></div>`;
+if(v)html+=`<p class="muted">${v===pair[1]?"✓ Correct match.":"Not quite. Try another match."}</p>`;
+});
+});
+return html+"</div>";
+}
+function mastery(){
+return `<div class="panel"><span class="pill">Cumulative synthesis</span>
+<h2>Mastery challenge</h2>
+<p>Apply what you've learned to integrated nutrition and clinical scenarios. These are original practice questions, not previous exam questions.</p>
+<div class="note"><b>Your progress:</b> ${score()} of 52 challenges correct. Progress is stored only in this browser.</div>
+${practice(7)}
+<button class="option" id="reset" style="font-weight:bold;text-align:center;margin-top:22px">Reset all study progress</button>
+</div>`;
+}
+function render(){
+$("nav").innerHTML=sections.map((s,i)=>`<button data-page="${i}" class="${i===page?"active":""}">${esc(s[0])}</button>`).join("");
+$("content").innerHTML=page===0?overview():page===6?matching():page===7?mastery():lesson(page);
+$("previous").disabled=page===0;
+$("next").disabled=page===7;
+$("previous").style.opacity=page===0?".4":"1";
+$("next").style.opacity=page===7?".4":"1";
+document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>go(+b.dataset.page));
+document.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{
+state.answers[+b.dataset.q]=+b.dataset.choice;
+save();render();
+});
+document.querySelectorAll("[data-match]").forEach(s=>s.onchange=()=>{
+state.matches[s.dataset.match]=s.value;
+save();render();
+});
+const reset=$("reset");
+if(reset)reset.onclick=()=>{
+if(confirm("Clear all Chapter 10 study progress?")){
+state={answers:{},matches:{},flips:{}};
+save();render();
+}
+};
+progress();
+}
+function go(i){
+page=i;
+render();
+window.scrollTo({top:0,behavior:"smooth"});
+}
+$("previous").onclick=()=>{if(page>0)go(page-1)};
+$("next").onclick=()=>{if(page<7)go(page+1)};
+render();
+</script>
+</body>
+</html>
