@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUTR 2351 | Chapter 12: Major Minerals</title>
+<style>
+:root{--green:#124b3b;--dark:#103f33;--gold:#f0c24f;--ink:#20352e;--soft:#f3f7f4;--line:#d9e5dd}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 Arial,sans-serif;color:var(--ink);background:#f7f9f8}
+header{background:linear-gradient(115deg,#103f33,#236a53);color:white;padding:36px 30px}
+header small{color:var(--gold);font-weight:800;letter-spacing:2px}
+h1{font-size:clamp(30px,4vw,49px);margin:14px 0}
+header p{max-width:1050px}
+.progress{max-width:900px;margin-top:24px}
+.track{height:13px;background:#d8e9df;border-radius:12px;overflow:hidden}
+.bar{background:var(--gold);height:100%;width:0;transition:width .2s}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:26px;max-width:1500px;margin:auto;padding:28px}
+nav{display:flex;flex-direction:column;gap:9px;align-self:start;position:sticky;top:12px}
+nav button,.control button{border:1px solid var(--line);background:white;color:var(--ink);padding:14px 16px;text-align:left;border-radius:12px;font-weight:700;cursor:pointer}
+nav button.active{background:var(--green);color:white}
+main{min-width:0}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:32px;margin-bottom:20px}
+.eyebrow{display:inline-block;background:#e6f1e9;color:#104c39;padding:6px 14px;border-radius:22px;font-size:12px;font-weight:800;letter-spacing:1px}
+h2{font-size:29px;margin:15px 0}
+h3{margin:20px 0 10px}
+.lesson{background:var(--soft);border-radius:14px;padding:18px 22px;margin:18px 0}
+.lesson ul{padding-left:22px}
+.question{border-top:1px solid var(--line);padding:20px 0}
+.question h3{font-size:18px}
+.options{display:grid;gap:8px}
+.option{display:block;width:100%;text-align:left;background:white;border:1px solid #cdded3;border-radius:10px;padding:11px 13px;font:inherit;cursor:pointer}
+.option:hover{background:#f1f7f3}
+.option.correct{border-color:#207a4c;background:#e7f5e9}
+.option.wrong{border-color:#bc5b53;background:#fff0ed}
+.feedback{padding:12px 15px;margin-top:10px;border-radius:10px;background:#f0f5f1}
+.control{display:flex;gap:12px;justify-content:space-between;margin-top:20px}
+.control button{background:var(--green);color:white;text-align:center}
+.control button:disabled{opacity:.4}
+.muted{color:#607168}
+.matchrow{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin:12px 0;align-items:center}
+.matchrow select{width:100%;padding:12px;border:1px solid #bcd1c3;border-radius:8px;font:inherit}
+.pill{display:inline-block;padding:5px 10px;background:#e8f3ea;border-radius:20px;font-weight:700;font-size:13px}
+@media(max-width:850px){
+.layout{grid-template-columns:1fr;padding:15px}
+nav{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.panel{padding:20px}
+.matchrow{grid-template-columns:1fr}
+header{padding:26px 18px}
+}
+</style>
+</head>
+<body>
+<header>
+<small>BAYLOR UNIVERSITY · NUTR 2351 · EXAM 3</small>
+<h1>Chapter 12: Major Minerals</h1>
+<p>Explore mineral functions, bone health, electrolyte balance, DASH, and bioavailability through active retrieval and application.</p>
+<div class="progress">
+<div id="score" aria-live="polite">0 challenges correct</div>
+<div class="track"><div class="bar" id="bar"></div></div>
+</div>
+</header>
+
+<div class="layout">
+<nav id="nav" aria-label="Study guide sections"></nav>
+<main>
+<div id="content"></div>
+<div class="control">
+<button id="previous">← Previous section</button>
+<button id="next">Next section →</button>
+</div>
+<p class="muted">This practice guide is ungraded. Progress is saved in this browser, not submitted to Canvas.</p>
+</main>
+</div>
+
+<script>
+"use strict";
+
+/*
+Question format:
+[question, [option A, B, C, D], correct option index, feedback]
+*/
+
+const sections = [
+{
+name:"Foundations",
+subtitle:"Major minerals, abundance, and bioavailability",
+lesson:`<p><b>Major minerals</b> are required in amounts greater than 100 mg/day. They include calcium, phosphorus, magnesium, sodium, potassium, chloride, and sulfur.</p>
+<ul>
+<li>Classification reflects quantity required, not biological importance.</li>
+<li>Calcium is the most abundant mineral in the body; phosphorus is second.</li>
+<li>Minerals are inorganic and cannot be destroyed by heat, although cooking water can carry minerals away.</li>
+<li><b>Bioavailability</b> describes the proportion absorbed and available for physiological use.</li>
+<li>Phytates in some grains and legumes can reduce absorption of certain minerals.</li>
+</ul>`,
+questions:[
+["How are major minerals distinguished from trace minerals?",["Major minerals are needed in amounts above 100 mg/day","They are always more important","They provide more calories","They cannot cause toxicity"],0,"The distinction is based on the quantity required."],
+["Which mineral is most abundant in the human body?",["Magnesium","Calcium","Potassium","Sulfur"],1,"Most body calcium is found in bones and teeth."],
+["Which mineral is second most abundant?",["Iron","Sodium","Phosphorus","Zinc"],2,"Phosphorus is second only to calcium in abundance."],
+["Which pair contains only major minerals?",["Iron and zinc","Iodine and selenium","Magnesium and chloride","Copper and fluoride"],2,"Magnesium and chloride are major minerals."],
+["What is mineral bioavailability?",["The total amount listed on a food label","The fraction absorbed and usable by the body","The mineral's taste","The amount present in soil"],1,"Absorption and utilization determine bioavailability."],
+["Which food component may inhibit absorption of certain minerals?",["Phytate","Glucose","Water","Vitamin C"],0,"Phytate can bind certain minerals in the digestive tract."],
+["Which statement about minerals is accurate?",["They supply 4 kcal/g","They are destroyed by ordinary cooking temperatures","They are inorganic nutrients","They are all absorbed equally"],2,"Minerals are inorganic and do not provide energy."],
+["Which factor can influence mineral requirements?",["Age and physiological status","Only height","Only food color","Only time of day"],0,"Requirements vary with age, life stage, and health."]
+]
+},
+{
+name:"Calcium, phosphorus & magnesium",
+subtitle:"Functions, regulation, absorption, and sources",
+lesson:`<p><b>Calcium:</b> Structural component of bones and teeth; also needed for muscle contraction, nerve signaling, and blood clotting.</p>
+<p><b>Phosphorus:</b> Component of hydroxyapatite, ATP, nucleic acids, and phospholipids.</p>
+<p><b>Magnesium:</b> Cofactor for hundreds of enzymes, particularly ATP-dependent reactions.</p>
+<ul>
+<li>When blood calcium falls, <b>parathyroid hormone (PTH)</b> rises.</li>
+<li>PTH promotes calcium conservation by the kidneys and activation of vitamin D.</li>
+<li>Active vitamin D increases intestinal absorption of calcium and phosphorus.</li>
+<li>Calcitonin can reduce bone resorption, although its role in adult calcium regulation is limited.</li>
+<li>Abnormal mineral deposition in soft tissues is called <b>calcification</b>.</li>
+</ul>`,
+questions:[
+["Where is most body calcium stored?",["Blood","Bones and teeth","Liver","Skeletal muscle"],1,"Nearly all body calcium is stored in the skeleton and teeth."],
+["What happens to PTH when blood calcium becomes low?",["It generally increases","It disappears","It converts to insulin","It becomes inactive permanently"],0,"PTH helps restore calcium concentrations."],
+["Which process is stimulated by active vitamin D?",["Intestinal calcium absorption","Calcium loss in stool","Iron destruction","Sweat production"],0,"Calcitriol supports calcium and phosphorus absorption."],
+["Which action helps PTH raise blood calcium?",["Increased renal calcium loss","Increased renal calcium reabsorption","Reduced vitamin D activation","Stopping bone remodeling"],1,"PTH helps the kidneys retain calcium."],
+["Calcitonin generally has which effect?",["Raises blood calcium","Lowers blood calcium","Raises blood sodium","Destroys vitamin D"],1,"Calcitonin can inhibit osteoclast activity and lower blood calcium."],
+["Which mineral combines with calcium to form skeletal hydroxyapatite?",["Phosphorus","Sodium","Chloride","Sulfur"],0,"Calcium and phosphate are major components of bone mineral."],
+["Which molecule contains phosphorus and transfers cellular energy?",["ATP","Hemoglobin","Retinol","Keratin"],0,"ATP contains phosphate groups."],
+["Magnesium is especially important for what?",["Enzyme activity and ATP reactions","Oxygen binding to hemoglobin","Thyroid hormone synthesis","Vitamin A vision"],0,"Magnesium participates in many enzyme-catalyzed reactions."],
+["Which food is a useful magnesium source?",["Pumpkin seeds","Hard candy","Refined sugar","Soft drinks"],0,"Seeds, nuts, legumes, and whole grains supply magnesium."],
+["Which combination is central to bone mineralization?",["Calcium, phosphorus, vitamin D","Sodium, chloride, vitamin C","Iron, iodine, vitamin B12","Potassium, niacin, folate"],0,"Calcium and phosphorus form bone mineral; vitamin D supports their absorption."],
+["Abnormal calcium deposition in soft tissues is called what?",["Calcification","Osteopenia","Hyponatremia","Rickets"],0,"Soft-tissue calcification is mineral deposition outside skeletal tissue."],
+["Which food commonly provides substantial calcium?",["Yogurt","Table sugar","Vegetable oil","Plain gelatin"],0,"Dairy and fortified alternatives are important calcium sources."]
+]
+},
+{
+name:"Bone health & osteoporosis",
+subtitle:"Peak bone mass, DXA, risk factors, and prevention",
+lesson:`<p>Bone is living tissue that continuously undergoes <b>remodeling</b> through osteoblast-mediated formation and osteoclast-mediated resorption.</p>
+<ul>
+<li><b>Peak bone mass</b> is generally reached in early adulthood, often around the late twenties.</li>
+<li>After menopause, declining estrogen can accelerate bone resorption.</li>
+<li>Osteoporosis increases bone fragility and fracture risk.</li>
+<li>Risk factors include older age, low body weight, inactivity, smoking, certain medications, and inadequate nutrient intake.</li>
+<li>Resistance and weight-bearing exercise support bone health.</li>
+</ul>
+<p><b>DXA T-score categories</b> for populations in which T-scores are appropriate:</p>
+<ul>
+<li>Normal: −1.0 or above</li>
+<li>Low bone mass (osteopenia): between −1.0 and −2.5</li>
+<li>Osteoporosis: −2.5 or below</li>
+</ul>
+<p>T-score diagnostic categories are not applied in the same way to children or premenopausal women.</p>`,
+questions:[
+["When is peak bone mass generally reached?",["Early childhood","Late teens through young adulthood","After age 65","Only after menopause"],1,"Peak bone mass is generally reached by early adulthood."],
+["What hormonal change can accelerate bone loss after menopause?",["Decreased estrogen","Increased insulin","Increased melatonin","Increased thyroid iodine"],0,"Reduced estrogen increases bone resorption."],
+["Which activity supports bone strength?",["Resistance and weight-bearing exercise","Prolonged bed rest","Avoiding movement","Chronic undernutrition"],0,"Mechanical loading helps maintain bone."],
+["A DXA T-score of −1.5 in an applicable adult indicates what?",["Normal density","Low bone mass","Osteoporosis","Rickets"],1,"Scores between −1.0 and −2.5 indicate low bone mass."],
+["Which T-score meets the osteoporosis threshold?",["+0.5","−0.5","−1.2","−2.7"],3,"A T-score at or below −2.5 meets the densitometric threshold."],
+["Which T-score is generally normal?",["−0.6","−1.7","−2.8","−3.1"],0,"Normal T-scores are −1.0 or higher."],
+["Which person has several osteoporosis risk factors?",["Older adult with low body weight and inactivity","Young adult who strength trains","Active adult meeting nutrient needs","Adult who regularly walks"],0,"Older age, low body weight, and inactivity increase risk."],
+["What is the major clinical concern associated with osteoporosis?",["Fragility fractures","Excess blood glucose","Iron toxicity","Vitamin C deficiency"],0,"Osteoporosis increases fracture risk."],
+["Which cells primarily build new bone?",["Osteoblasts","Osteoclasts","Red blood cells","Platelets"],0,"Osteoblasts synthesize new bone matrix."],
+["Which cells primarily resorb bone?",["Osteoblasts","Osteoclasts","Neurons","Adipocytes"],1,"Osteoclasts break down bone tissue."],
+["Which approach best supports long-term bone health?",["Adequate calcium and vitamin D plus appropriate exercise","Avoiding all dairy without alternatives","Restricting all protein","Remaining inactive"],0,"Nutrition and mechanical loading both support skeletal health."],
+["Why is maximizing peak bone mass important?",["It provides greater skeletal reserve for later life","It eliminates all future fracture risk","It prevents every chronic disease","It stops bone remodeling"],0,"Greater peak bone mass can reduce later osteoporosis risk."]
+]
+},
+{
+name:"Electrolytes & fluid balance",
+subtitle:"Sodium, potassium, chloride, and disturbances",
+lesson:`<p><b>Sodium</b> is the principal extracellular cation. <b>Potassium</b> is the principal intracellular cation. <b>Chloride</b> is a major extracellular anion.</p>
+<ul>
+<li>These minerals help regulate fluid distribution, nerve impulses, and muscle function.</li>
+<li>Much dietary sodium comes from packaged, prepared, and restaurant foods.</li>
+<li><b>Hyponatremia:</b> Low blood sodium; severe cases can cause confusion, seizures, and neurological complications.</li>
+<li><b>Hypokalemia:</b> Low blood potassium; may cause weakness and abnormal heart rhythms.</li>
+<li>Potassium is important for membrane potential but is not the primary blood buffer.</li>
+<li>Table salt is sodium chloride; chloride accounts for slightly more of its mass.</li>
+</ul>`,
+questions:[
+["Which is the principal extracellular cation?",["Sodium","Potassium","Magnesium","Phosphate"],0,"Sodium predominates in extracellular fluid."],
+["Which is the principal intracellular cation?",["Sodium","Potassium","Chloride","Calcium"],1,"Potassium is concentrated inside cells."],
+["Which is a major extracellular anion?",["Chloride","Potassium","Calcium","Magnesium"],0,"Chloride helps maintain extracellular fluid balance."],
+["What is a major source of sodium in the typical U.S. diet?",["Processed and restaurant foods","Only salt added at the table","Fresh fruit","Plain water"],0,"Much dietary sodium is already present in prepared foods."],
+["What does hyponatremia mean?",["Low blood sodium","High blood potassium","Low blood calcium","High blood magnesium"],0,"Hyponatremia is an abnormally low serum sodium concentration."],
+["Which symptom may occur with severe hyponatremia?",["Confusion or seizures","Improved alertness","Increased bone density","Night blindness"],0,"Severe hyponatremia can cause dangerous neurological symptoms."],
+["What does hypokalemia mean?",["Low blood potassium","High blood sodium","Low blood iron","High blood calcium"],0,"Hypokalemia is a low serum potassium concentration."],
+["Which complication can occur with hypokalemia?",["Abnormal heart rhythms","Stronger bones","Improved night vision","Increased hemoglobin"],0,"Potassium disturbances can disrupt cardiac electrical activity."],
+["Why is potassium essential for nerve and muscle function?",["It helps establish membrane potentials","It supplies calories","It is part of hemoglobin","It converts vitamin D to calcium"],0,"Potassium gradients support electrical signaling."],
+["Which mineral makes up slightly more of table salt by mass?",["Chloride","Sodium","Potassium","Magnesium"],0,"Sodium chloride is approximately 60.7% chloride by mass."],
+["Which food is generally rich in potassium?",["Baked potato","Hard candy","Vegetable oil","Table sugar"],0,"Potatoes, legumes, fruits, and vegetables can provide potassium."]
+]
+},
+{
+name:"DASH & blood pressure",
+subtitle:"Dietary approaches and practical applications",
+lesson:`<p><b>DASH</b> stands for <b>Dietary Approaches to Stop Hypertension</b>.</p>
+<p>The eating pattern emphasizes vegetables, fruits, whole grains, legumes, nuts, and low-fat dairy. It is rich in potassium, magnesium, and calcium, while limiting sodium and saturated fat.</p>
+<p>DASH is a dietary pattern rather than a single supplement or nutrient. Practical implementation includes choosing minimally processed foods, comparing sodium on Nutrition Facts labels, and replacing high-sodium meals with nutrient-rich alternatives.</p>`,
+questions:[
+["What does DASH stand for?",["Dietary Approaches to Stop Hypertension","Daily Assessment of Sodium and Hydration","Dietary Analysis for Skeletal Health","Daily Allowance of Sodium and Hemoglobin"],0,"DASH means Dietary Approaches to Stop Hypertension."],
+["Which mineral combination is emphasized by DASH?",["Potassium, calcium, magnesium","Iron, iodine, fluoride","Copper, zinc, selenium","Sodium, chloride, sulfur only"],0,"DASH is rich in potassium, calcium, and magnesium."],
+["Which meal best reflects DASH principles?",["Grilled chicken, vegetables, brown rice, and yogurt","Processed meat sandwich and chips","Instant noodles with extra salt","Sugary drink and candy"],0,"DASH emphasizes nutrient-rich foods and reduced sodium."],
+["Which change can help reduce dietary sodium?",["Compare labels and choose lower-sodium products","Add salt before tasting","Choose more processed meats","Replace fruit with salty snacks"],0,"Label comparisons can identify lower-sodium choices."],
+["DASH was developed primarily to help address what?",["High blood pressure","Night blindness","Iron deficiency anemia","Scurvy"],0,"DASH is an evidence-based eating pattern for blood pressure management."],
+["Which statement about DASH is most accurate?",["It is an overall eating pattern","It is a potassium supplement","It eliminates all dietary fat","It requires avoiding all carbohydrates"],0,"DASH combines multiple food and nutrient recommendations."],
+["Which snack best fits DASH principles?",["Unsalted nuts and fruit","Salted chips","Processed meat sticks","Candy only"],0,"Fruit and unsalted nuts provide useful nutrients with less sodium."]
+]
+},
+{
+name:"Sulfur & bioavailability",
+subtitle:"Amino acids, keratin, and absorption",
+lesson:`<p><b>Sulfur</b> is incorporated into the amino acids methionine and cysteine. Cysteine can form disulfide bonds that help stabilize proteins such as keratin in hair and nails.</p>
+<p>Protein-containing foods supply sulfur amino acids.</p>
+<p><b>Mineral bioavailability</b> depends on food composition, digestive conditions, nutrient interactions, and physiological status. Phytate can reduce absorption of certain minerals; soaking, sprouting, and fermentation may lower phytate content.</p>`,
+questions:[
+["Which amino acids contain sulfur?",["Methionine and cysteine","Lysine and glycine","Alanine and valine","Tryptophan and leucine"],0,"Methionine and cysteine are sulfur-containing amino acids."],
+["Sulfur contributes to the structure of which protein?",["Keratin","Hemoglobin heme","Calcitriol","Insulin receptor glucose"],0,"Cysteine disulfide bonds help stabilize keratin."],
+["Which foods supply sulfur-containing amino acids?",["Protein-containing foods","Only refined sugar","Only vegetable oil","Only water"],0,"Dietary proteins provide methionine and cysteine."],
+["Which compound can lower mineral absorption?",["Phytate","Water","Glucose","Vitamin C in every situation"],0,"Phytate can bind some minerals and reduce their absorption."],
+["Which processing methods may reduce phytate?",["Soaking, sprouting, and fermentation","Adding salt","Freezing water","Removing all protein"],0,"Traditional processing can reduce phytate content."],
+["Why does mineral content alone not establish nutritional value?",["Absorption and utilization vary","All minerals are absorbed completely","Labels measure absorption exactly","Minerals never interact"],0,"Bioavailability determines how much mineral is usable."],
+["Which statement about mineral absorption is most accurate?",["It depends on the food matrix and individual physiology","It is identical for all foods","It is always 100%","It is unrelated to other nutrients"],0,"Multiple dietary and physiological factors influence absorption."]
+]
+}
+];
+
+const matching=[
+["Calcium","Most abundant mineral; important in bones and teeth"],
+["Phosphorus","Second most abundant mineral; part of ATP"],
+["Magnesium","Cofactor in ATP-related enzyme reactions"],
+["Sodium","Principal extracellular cation"],
+["Potassium","Principal intracellular cation"],
+["Chloride","Major extracellular anion"],
+["Sulfur","Present in methionine, cysteine, and keratin"],
+["Phytate","Food component that can reduce some mineral absorption"]
+];
+
+const all=sections.flatMap((s,si)=>s.questions.map((q,qi)=>({
+id:"s"+si+"q"+qi,q
+})));
+const total=all.length+matching.length;
+const storageKey="nutr2351-ch12-major-minerals-v3";
+let saved={};
+try{saved=JSON.parse(localStorage.getItem(storageKey)||"{}")}catch(e){}
+let page=-1;
+const nav=document.getElementById("nav");
+const content=document.getElementById("content");
+
+const labels=[
+"Start here",
+...sections.map(s=>s.name),
+"Matching lab",
+"Mastery challenge"
+];
+
+labels.forEach((label,i)=>{
+const b=document.createElement("button");
+b.textContent=label;
+b.onclick=()=>show(i-1);
+nav.appendChild(b);
+});
+
+function escapeHTML(value){
+return String(value).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",
+'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function update(){
+const correctQuestions=all.filter(x=>saved[x.id]===x.q[2]).length;
+const correctMatches=matching.filter((x,i)=>saved["m"+i]===i).length;
+const count=correctQuestions+correctMatches;
+const percent=Math.round(100*count/total);
+document.getElementById("score").textContent=
+count+" of "+total+" challenges correct ("+percent+"%)";
+document.getElementById("bar").style.width=percent+"%";
+}
+
+function persist(){
+try{localStorage.setItem(storageKey,JSON.stringify(saved))}catch(e){}
+update();
+}
+
+function questionBlock(q,id){
+const selected=saved[id];
+const answered=selected!==undefined;
+return `
+<div class="question">
+<h3>${escapeHTML(q[0])}</h3>
+<div class="options">
+${q[1].map((option,i)=>`
+<button
+class="option ${answered&&i===q[2]?"correct":""}
+${answered&&i===selected&&i!==q[2]?"wrong":""}"
+data-id="${id}"
+data-choice="${i}"
+${answered?"disabled":""}>
+${String.fromCharCode(65+i)}. ${escapeHTML(option)}
+</button>`).join("")}
+</div>
+${answered?`
+<div class="feedback">
+<strong>${selected===q[2]?"Correct!":"Not quite."}</strong>
+${escapeHTML(q[3])}
+</div>`:""}
+</div>`;
+}
+
+function attachQuestions(){
+content.querySelectorAll("[data-choice]").forEach(button=>{
+button.onclick=()=>{
+saved[button.dataset.id]=Number(button.dataset.choice);
+persist();
+show(page,false);
+};
+});
+}
+
+function sectionPage(index){
+const s=sections[index];
+return `
+<div class="panel">
+<span class="eyebrow">SECTION ${index+1} OF ${sections.length}</span>
+<h2>${escapeHTML(s.name)}</h2>
+<p class="muted">${escapeHTML(s.subtitle)}</p>
+<div class="lesson">${s.lesson}</div>
+<p class="pill">${s.questions.length} practice challenges</p>
+${s.questions.map((q,i)=>questionBlock(q,"s"+index+"q"+i)).join("")}
+</div>`;
+}
+
+function matchingPage(){
+return `
+<div class="panel">
+<span class="eyebrow">RETRIEVAL PRACTICE</span>
+<h2>Matching lab</h2>
+<p>Match each mineral or term to its best description.</p>
+${matching.map((item,i)=>`
+<div class="matchrow">
+<strong>${escapeHTML(item[0])}</strong>
+<select data-match="${i}">
+<option value="">Choose a description...</option>
+${matching.map((other,j)=>`
+<option value="${j}"
+${saved["m"+i]===j?"selected":""}>
+${escapeHTML(other[1])}
+</option>`).join("")}
+</select>
+</div>
+${saved["m"+i]!==undefined?`
+<div class="feedback">
+${saved["m"+i]===i?
+"Correct match.":
+"Not quite. Try a different description."}
+</div>`:""}
+`).join("")}
+</div>`;
+}
+
+function masteryPage(){
+const remaining=all.filter(x=>saved[x.id]!==x.q[2]);
+const unmatched=matching.filter((x,i)=>saved["m"+i]!==i);
+return `
+<div class="panel">
+<span class="eyebrow">MASTERY CHECK</span>
+<h2>Your personalized review</h2>
+<p>You have <strong>${remaining.length}</strong>
+multiple-choice challenges and
+<strong>${unmatched.length}</strong>
+matching challenges not yet correct.</p>
+<div class="lesson">
+<h3>High-priority exam connections</h3>
+<ul>
+<li>Compare calcium, phosphorus, and magnesium.</li>
+<li>Explain PTH and vitamin D in calcium regulation.</li>
+<li>Interpret T-scores and recognize osteoporosis risks.</li>
+<li>Distinguish sodium, potassium, and chloride.</li>
+<li>Recognize hyponatremia and hypokalemia.</li>
+<li>Apply DASH to food choices.</li>
+<li>Explain sulfur amino acids and phytate.</li>
+</ul>
+</div>
+${remaining.length?`
+<h3>Questions to revisit</h3>
+${remaining.slice(0,15).map(x=>`
+<p>• ${escapeHTML(x.q[0])}</p>`).join("")}
+<p class="muted">Return to the appropriate section to review.</p>
+`:"<p><strong>Excellent! All multiple-choice challenges are correct.</strong></p>"}
+<button id="reset" class="option">
+Reset all progress and practice again
+</button>
+</div>`;
+}
+
+function show(next,scroll=true){
+page=next;
+[...nav.children].forEach((button,i)=>{
+button.classList.toggle("active",i===next+1);
+});
+
+if(next===-1){
+content.innerHTML=`
+<div class="panel">
+<span class="eyebrow">WELCOME</span>
+<h2>Your interactive exam review</h2>
+<p>This guide covers <b>Chapter 12: Major Minerals</b>
+and prepares you to understand and apply key concepts
+rather than memorize previous exam questions.</p>
+<div class="lesson">
+<h3>How to use this guide</h3>
+<p>Read each short lesson, answer the practice questions,
+complete the matching lab, and finish with the
+personalized mastery challenge.</p>
+<p>Each answer provides immediate feedback.
+Your progress is saved in this browser and
+<b>is not submitted to Canvas</b>.</p>
+</div>
+<h3>Topics covered</h3>
+<p>Mineral foundations, calcium, phosphorus, magnesium,
+bone health, osteoporosis, electrolyte balance,
+DASH, sulfur, and mineral bioavailability.</p>
+<p class="pill">${total} interactive challenges</p>
+</div>`;
+}
+else if(next<sections.length){
+content.innerHTML=sectionPage(next);
+attachQuestions();
+}
+else if(next===sections.length){
+content.innerHTML=matchingPage();
+content.querySelectorAll("[data-match]").forEach(select=>{
+select.onchange=()=>{
+const i=Number(select.dataset.match);
+if(select.value==="")delete saved["m"+i];
+else saved["m"+i]=Number(select.value);
+persist();
+show(page,false);
+};
+});
+}
+else{
+content.innerHTML=masteryPage();
+document.getElementById("reset").onclick=()=>{
+if(confirm("Clear all Chapter 12 practice progress?")){
+saved={};
+persist();
+show(-1);
+}
+};
+}
+
+document.getElementById("previous").disabled=next===-1;
+document.getElementById("next").disabled=next===sections.length+1;
+update();
+if(scroll)window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.getElementById("previous").onclick=()=>{
+show(Math.max(-1,page-1));
+};
+document.getElementById("next").onclick=()=>{
+show(Math.min(sections.length+1,page+1));
+};
+show(-1);
+</script>
+</body>
+</html>
