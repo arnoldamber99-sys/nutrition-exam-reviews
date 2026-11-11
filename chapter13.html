@@ -1,1 +1,1354 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUTR 2351 | Chapter 13: Trace Minerals</title>
+<style>
+:root{
+--green:#124b3b;
+--dark:#103f33;
+--gold:#f0c24f;
+--ink:#20352e;
+--soft:#f3f7f4;
+--line:#d9e5dd
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font:17px/1.6 Arial,sans-serif;
+color:var(--ink);
+background:#f7f9f8
+}
+header{
+background:linear-gradient(115deg,#103f33,#236a53);
+color:white;
+padding:36px 30px
+}
+header small{
+color:var(--gold);
+font-weight:800;
+letter-spacing:2px
+}
+h1{font-size:clamp(30px,4vw,49px);margin:14px 0}
+header p{max-width:1050px}
+.progress{max-width:900px;margin-top:24px}
+.track{
+height:13px;
+background:#d8e9df;
+border-radius:12px;
+overflow:hidden
+}
+.bar{
+background:var(--gold);
+height:100%;
+width:0;
+transition:width .2s
+}
+.layout{
+display:grid;
+grid-template-columns:260px minmax(0,1fr);
+gap:26px;
+max-width:1500px;
+margin:auto;
+padding:28px
+}
+nav{
+display:flex;
+flex-direction:column;
+gap:9px;
+align-self:start;
+position:sticky;
+top:12px
+}
+nav button,.control button{
+border:1px solid var(--line);
+background:white;
+color:var(--ink);
+padding:14px 16px;
+text-align:left;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+font-size:15px
+}
+nav button.active{
+background:var(--green);
+color:white
+}
+main{min-width:0}
+.panel{
+background:white;
+border:1px solid var(--line);
+border-radius:20px;
+padding:32px;
+margin-bottom:20px
+}
+.eyebrow{
+display:inline-block;
+background:#e6f1e9;
+color:#104c39;
+padding:6px 14px;
+border-radius:22px;
+font-size:12px;
+font-weight:800;
+letter-spacing:1px
+}
+h2{font-size:29px;margin:15px 0}
+h3{margin:20px 0 10px;color:var(--dark)}
+.lesson{
+background:var(--soft);
+border-radius:14px;
+padding:18px 22px;
+margin:18px 0
+}
+.lesson ul{padding-left:22px}
+.lesson li{margin-bottom:9px}
+.question{
+border-top:1px solid var(--line);
+padding:20px 0
+}
+.question h3{font-size:18px}
+.options{display:grid;gap:8px}
+.option{
+display:block;
+width:100%;
+text-align:left;
+background:white;
+border:1px solid #cdded3;
+border-radius:10px;
+padding:12px 14px;
+font:inherit;
+cursor:pointer
+}
+.option:hover:not(:disabled){background:#f1f7f3}
+.option.correct{
+border-color:#207a4c;
+background:#e7f5e9
+}
+.option.wrong{
+border-color:#bc5b53;
+background:#fff0ed
+}
+.option:disabled{cursor:default;color:var(--ink)}
+.feedback{
+padding:13px 16px;
+margin-top:10px;
+border-radius:10px;
+background:#f0f5f1;
+line-height:1.65
+}
+.control{
+display:flex;
+gap:12px;
+justify-content:space-between;
+margin-top:20px
+}
+.control button{
+background:var(--green);
+color:white;
+text-align:center
+}
+.control button:disabled{opacity:.4}
+.muted{color:#607168}
+.matchrow{
+display:grid;
+grid-template-columns:1fr 1.5fr;
+gap:10px;
+margin:12px 0;
+align-items:center
+}
+.matchrow select{
+width:100%;
+padding:12px;
+border:1px solid #bcd1c3;
+border-radius:8px;
+font:inherit
+}
+.pill{
+display:inline-block;
+padding:5px 10px;
+background:#e8f3ea;
+border-radius:20px;
+font-weight:700;
+font-size:13px
+}
+.callout{
+background:#fff7df;
+border-left:5px solid var(--gold);
+padding:15px 19px;
+border-radius:8px;
+margin:18px 0
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+margin:16px 0
+}
+.card{
+background:white;
+border:1px solid var(--line);
+border-radius:12px;
+padding:15px
+}
+.card b{color:var(--green)}
+.tablewrap{overflow-x:auto}
+table{
+width:100%;
+border-collapse:collapse;
+font-size:15px;
+background:white
+}
+th,td{
+padding:12px;
+border:1px solid var(--line);
+text-align:left;
+vertical-align:top
+}
+th{background:#e5efe8;color:var(--dark)}
+@media(max-width:850px){
+.layout{grid-template-columns:1fr;padding:15px}
+nav{
+position:static;
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr))
+}
+.panel{padding:20px}
+.matchrow,.grid{grid-template-columns:1fr}
+header{padding:26px 18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<small>BAYLOR UNIVERSITY · NUTR 2351 · EXAM 4</small>
+<h1>Chapter 13: Trace Minerals</h1>
+<p>
+Explore iron absorption and regulation, trace mineral
+functions, nutrient-rich foods, deficiency and toxicity
+patterns, and clinical nutrition applications through
+active retrieval and practice.
+</p>
+<div class="progress">
+<div id="score" aria-live="polite">0 challenges correct</div>
+<div class="track"><div class="bar" id="bar"></div></div>
+</div>
+</header>
+
+<div class="layout">
+<nav id="nav" aria-label="Study guide sections"></nav>
+<main>
+<div id="content"></div>
+<div class="control">
+<button id="previous">← Previous section</button>
+<button id="next">Next section →</button>
+</div>
+<p class="muted">
+This practice guide is ungraded. Progress is saved
+in this browser and is not submitted to Canvas.
+</p>
+</main>
+</div>
+
+<script>
+"use strict";
+
+/*
+Question format:
+[question, [option A, B, C, D], correct index, explanation]
+*/
+
+const sections=[
+
+{
+name:"Trace Mineral Foundations",
+subtitle:"Essential minerals, physiological functions, and bioavailability",
+lesson:`
+<p><b>Trace minerals</b> are essential minerals generally
+required in amounts less than 100 mg per day. Although
+needed in small quantities, they perform critical
+physiological functions.</p>
+
+<div class="grid">
+<div class="card"><b>Iron</b><br>Oxygen transport,
+energy metabolism, and enzyme activity.</div>
+<div class="card"><b>Zinc</b><br>Growth, immunity,
+wound healing, and taste perception.</div>
+<div class="card"><b>Iodine</b><br>Production of
+thyroid hormones.</div>
+<div class="card"><b>Selenium</b><br>Antioxidant
+defense and thyroid hormone metabolism.</div>
+<div class="card"><b>Copper</b><br>Iron metabolism,
+connective tissue, and enzyme function.</div>
+<div class="card"><b>Fluoride</b><br>Protection of
+tooth enamel and resistance to dental caries.</div>
+<div class="card"><b>Manganese</b><br>Enzyme activity
+and metabolism.</div>
+<div class="card"><b>Chromium</b><br>Associated with
+normal macronutrient metabolism.</div>
+</div>
+
+<h3>Important Principles</h3>
+<ul>
+<li>Trace minerals do not provide calories.</li>
+<li>Small requirements do not mean small importance.</li>
+<li>Both inadequate and excessive intakes can cause harm.</li>
+<li><b>Bioavailability</b> describes the proportion of a
+nutrient absorbed and available for use.</li>
+<li>Absorption can be influenced by food composition,
+other nutrients, and physiological status.</li>
+</ul>
+
+<div class="callout">
+<b>Exam connection:</b> Be able to identify each
+mineral's primary function and distinguish a
+deficiency from a toxicity.
+</div>`,
+questions:[
+["Why are trace minerals classified separately from major minerals?",
+["They are required in smaller amounts",
+"They are less biologically important",
+"They cannot become toxic",
+"They provide fewer calories"],
+0,"Trace minerals are classified by the relatively small amounts required, not by their importance."],
+
+["Which mineral is essential for producing thyroid hormones?",
+["Zinc","Iodine","Fluoride","Copper"],
+1,"Iodine is incorporated into the thyroid hormones T3 and T4."],
+
+["What does mineral bioavailability describe?",
+["Total mineral content in a food",
+"The proportion absorbed and available for use",
+"The amount destroyed during cooking",
+"The mineral's contribution to calories"],
+1,"Bioavailability depends on absorption and the ability of the body to use the mineral."],
+
+["Which statement about trace minerals is correct?",
+["They are needed only during childhood",
+"They cannot interact with other nutrients",
+"Deficiency and toxicity are both possible",
+"They supply energy during exercise"],
+2,"Trace minerals are essential throughout life, and both insufficient and excessive exposure may produce adverse effects."]
+]
+},
+
+{
+name:"Iron: Functions & Requirements",
+subtitle:"Oxygen transport, iron forms, requirements, and anemia",
+lesson:`
+<h3>Why Iron Matters</h3>
+<p>Iron is essential for several important functions:</p>
+<ul>
+<li><b>Hemoglobin:</b> Transports oxygen in red blood cells.</li>
+<li><b>Myoglobin:</b> Stores and facilitates oxygen movement
+in muscle tissue.</li>
+<li><b>Energy metabolism:</b> Iron-containing enzymes
+participate in electron transport and cellular respiration.</li>
+<li><b>Immune and neurological function:</b> Adequate iron
+supports normal physiological development and function.</li>
+</ul>
+
+<h3>Heme vs. Nonheme Iron</h3>
+<div class="grid">
+<div class="card">
+<b>Heme Iron</b>
+<p>Found in meat, poultry, and fish.</p>
+<p>Generally absorbed more efficiently and is
+less affected by other meal components.</p>
+</div>
+<div class="card">
+<b>Nonheme Iron</b>
+<p>Found in plant foods, fortified foods,
+and animal foods.</p>
+<p>Absorption is strongly influenced by
+the composition of the meal.</p>
+</div>
+</div>
+
+<h3>Iron Recommended Dietary Allowances</h3>
+<div class="tablewrap"><table>
+<tr><th>Population</th><th>RDA</th></tr>
+<tr><td>Men, 19–50 years</td><td>8 mg/day</td></tr>
+<tr><td>Women, 19–50 years</td><td>18 mg/day</td></tr>
+<tr><td>Adults 51+ years</td><td>8 mg/day</td></tr>
+<tr><td>Pregnancy</td><td>27 mg/day</td></tr>
+</table></div>
+
+<h3>Iron Deficiency</h3>
+<p>Inadequate iron can eventually produce
+<b>microcytic, hypochromic anemia</b>.</p>
+<ul>
+<li><b>Microcytic:</b> Red blood cells are smaller
+than normal.</li>
+<li><b>Hypochromic:</b> Red blood cells contain
+less hemoglobin and appear paler.</li>
+<li>Possible symptoms include fatigue, weakness,
+reduced exercise tolerance, and impaired concentration.</li>
+</ul>
+
+<div class="callout">
+<b>Remember:</b> Iron requirements vary with
+life stage and physiological status. Menstruation
+and pregnancy increase iron needs.
+</div>`,
+questions:[
+["Which protein in red blood cells requires iron for oxygen transport?",
+["Collagen","Hemoglobin","Keratin","Albumin"],
+1,"Hemoglobin contains iron within its heme groups, allowing oxygen binding."],
+
+["Which statement about heme iron is accurate?",
+["It is found exclusively in vegetables",
+"It is generally more bioavailable than nonheme iron",
+"It cannot be absorbed",
+"It is the only form present in fortified cereal"],
+1,"Heme iron from animal flesh foods is generally absorbed more efficiently."],
+
+["What is the RDA for iron for most adult men?",
+["8 mg","14 mg","18 mg","27 mg"],
+0,"The iron RDA for adult men is 8 mg/day."],
+
+["What is the iron RDA for women ages 19–50?",
+["8 mg","10 mg","18 mg","28 mg"],
+2,"The RDA is 18 mg/day for women ages 19–50."],
+
+["Which iron RDA applies during pregnancy?",
+["8 mg","14 mg","18 mg","27 mg"],
+3,"Pregnancy increases iron requirements to 27 mg/day."],
+
+["What does microcytic anemia indicate?",
+["Abnormally large red blood cells",
+"Smaller-than-normal red blood cells",
+"Excess blood calcium",
+"Excess white blood cells"],
+1,"Microcytic means that red blood cells are smaller than normal."]
+]
+},
+
+{
+name:"Iron Absorption & Regulation",
+subtitle:"Hepcidin, ferroportin, transferrin, and absorption enhancers",
+lesson:`
+<h3>Follow Iron Through the Body</h3>
+
+<div class="grid">
+<div class="card">
+<b>Ferroportin</b>
+<p>Exports iron from intestinal cells into circulation
+and from iron-storing cells.</p>
+</div>
+<div class="card">
+<b>Hephaestin</b>
+<p>Helps oxidize iron from Fe2+ to Fe3+,
+allowing it to bind transferrin.</p>
+</div>
+<div class="card">
+<b>Transferrin</b>
+<p>Transports iron through the bloodstream.</p>
+</div>
+<div class="card">
+<b>Ferritin</b>
+<p>Stores iron inside cells.</p>
+</div>
+<div class="card">
+<b>Hepcidin</b>
+<p>A liver-produced hormone that regulates
+iron entry into circulation.</p>
+</div>
+<div class="card">
+<b>Ceruloplasmin</b>
+<p>A copper-containing protein involved in
+iron oxidation and transport.</p>
+</div>
+</div>
+
+<h3>How Hepcidin Works</h3>
+<p>When hepcidin concentrations increase,
+hepcidin binds to ferroportin and promotes
+its internalization and degradation.</p>
+
+<p><b>Result:</b> Less iron is released from intestinal
+cells and iron-storage cells into the bloodstream.</p>
+
+<div class="callout">
+<b>Memory strategy:</b><br>
+Hepcidin = regulates iron availability.<br>
+Ferroportin = exports iron.<br>
+Transferrin = transports iron.<br>
+Ferritin = stores iron.
+</div>
+
+<h3>Factors Affecting Nonheme Iron Absorption</h3>
+
+<div class="grid">
+<div class="card">
+<b>Enhancers</b>
+<ul>
+<li>Vitamin C (ascorbic acid)</li>
+<li>Meat, fish, and poultry (MFP factor)</li>
+<li>Greater physiological iron need</li>
+</ul>
+</div>
+<div class="card">
+<b>Inhibitors</b>
+<ul>
+<li>Phytates in grains and legumes</li>
+<li>Polyphenols in tea and coffee</li>
+<li>Calcium may reduce iron absorption
+when consumed together</li>
+</ul>
+</div>
+</div>
+
+<h3>The MFP Factor</h3>
+<p>The meat, fish, and poultry factor describes
+the ability of these animal foods to improve
+absorption of nonheme iron consumed in the same meal.</p>
+
+<p>For example, adding chicken to a bean-based meal
+may increase absorption of the nonheme iron
+provided by the beans.</p>
+
+<h3>Hemochromatosis</h3>
+<p>Hereditary hemochromatosis is a genetic condition
+associated with excessive iron absorption and
+accumulation. Excess iron may damage the liver,
+heart, pancreas, and other organs.</p>
+
+<p>Individuals with hemochromatosis should avoid
+unnecessary iron supplementation and receive
+individualized medical guidance.</p>`,
+questions:[
+["Which hormone reduces iron release into the bloodstream by regulating ferroportin?",
+["Insulin","Hepcidin","Calcitonin","Leptin"],
+1,"Hepcidin is produced by the liver and reduces ferroportin-mediated iron export."],
+
+["What is the primary function of ferroportin?",
+["Store iron in the liver",
+"Transport oxygen in red blood cells",
+"Export iron from cells",
+"Produce thyroid hormones"],
+2,"Ferroportin exports iron from enterocytes and iron-storage cells."],
+
+["Which protein carries iron in the bloodstream?",
+["Ferritin","Transferrin","Myoglobin","Keratin"],
+1,"Transferrin is the major circulating iron transport protein."],
+
+["Which protein primarily stores iron?",
+["Ferritin","Transferrin","Hepcidin","Hemoglobin"],
+0,"Ferritin stores iron within cells."],
+
+["Which protein helps oxidize iron as it exits intestinal cells?",
+["Hephaestin","Leptin","Insulin","Pepsin"],
+0,"Hephaestin assists with iron oxidation so iron can bind transferrin."],
+
+["Which meal is most likely to improve nonheme iron absorption?",
+["Beans with orange slices",
+"Beans with strong black tea",
+"Fortified cereal with coffee",
+"Spinach with a large calcium supplement"],
+0,"Vitamin C in oranges improves nonheme iron absorption."],
+
+["What does the MFP factor describe?",
+["Meat, fish, and poultry enhancing nonheme iron absorption",
+"Milk preventing all mineral absorption",
+"Magnesium increasing fat digestion",
+"Protein eliminating iron requirements"],
+0,"Meat, fish, and poultry contain factors that enhance nonheme iron absorption."],
+
+["Which recommendation is appropriate for someone with hereditary hemochromatosis?",
+["Take additional iron without testing",
+"Use iron supplements only when medically indicated",
+"Increase iron intake as much as possible",
+"Assume excess iron is harmless"],
+1,"Hemochromatosis involves iron accumulation, so unnecessary iron supplementation can be harmful."],
+
+["Why is copper important for normal iron metabolism?",
+["Copper-containing proteins support iron oxidation",
+"Copper replaces iron in hemoglobin",
+"Copper prevents all iron absorption",
+"Copper destroys transferrin"],
+0,"Copper-containing ferroxidases, including ceruloplasmin, help iron become available for transport."]
+]
+},
+
+{
+name:"Zinc, Copper & Chromium",
+subtitle:"Growth, taste, immunity, iron metabolism, and glucose regulation",
+lesson:`
+<h3>Zinc</h3>
+<p>Zinc participates in hundreds of enzymatic
+reactions and is essential for:</p>
+<ul>
+<li>Growth and development</li>
+<li>Immune function</li>
+<li>Wound healing</li>
+<li>Taste and smell</li>
+<li>DNA and protein synthesis</li>
+<li>Normal reproductive development</li>
+</ul>
+
+<p><b>Deficiency:</b> Impaired taste, reduced immunity,
+poor wound healing, growth impairment, and
+delayed sexual maturation.</p>
+
+<p><b>Food sources:</b> Oysters, beef, poultry,
+seafood, and legumes.</p>
+
+<p><b>Absorption consideration:</b> Phytates in
+plant foods can reduce zinc absorption.
+Animal proteins generally improve zinc
+bioavailability.</p>
+
+<p><b>Excess zinc:</b> High supplemental intakes
+can interfere with copper absorption and
+eventually contribute to copper deficiency.</p>
+
+<h3>Copper</h3>
+<p>Copper is important for iron metabolism,
+connective tissue synthesis, antioxidant enzymes,
+and nervous system function.</p>
+
+<p><b>Ceruloplasmin</b> is a copper-containing
+ferroxidase involved in iron metabolism.</p>
+
+<p><b>Wilson disease:</b> A genetic disorder causing
+abnormal copper accumulation.</p>
+
+<p><b>Kayser–Fleischer rings:</b> Copper deposits
+visible around the cornea, classically associated
+with Wilson disease.</p>
+
+<p><b>Food sources:</b> Shellfish, nuts,
+seeds, and chocolate.</p>
+
+<h3>Chromium</h3>
+<p>Chromium has traditionally been associated
+with insulin action and glucose metabolism.
+Its essentiality and precise role in humans
+remain subjects of scientific discussion.</p>
+
+<p>Rare chromium deficiency in certain clinical
+settings has been associated with impaired
+glucose tolerance.</p>
+
+<div class="callout">
+<b>High-yield distinction:</b><br>
+Zinc deficiency = taste, growth, immunity.<br>
+Copper accumulation = Kayser–Fleischer rings.<br>
+Chromium deficiency = impaired glucose tolerance
+in rare clinical circumstances.
+</div>`,
+questions:[
+["A patient reports diminished taste perception and delayed wound healing. Which mineral deserves consideration?",
+["Zinc","Fluoride","Iodine","Selenium"],
+0,"Zinc supports taste perception, immune function, and tissue repair."],
+
+["Which food is exceptionally rich in zinc?",
+["Oysters","Apples","White rice","Olive oil"],
+0,"Oysters are among the richest dietary sources of zinc."],
+
+["Why can very high zinc supplementation contribute to copper deficiency?",
+["Zinc can interfere with intestinal copper absorption",
+"Zinc destroys red blood cells directly",
+"Copper is not essential",
+"Zinc prevents digestion of all proteins"],
+0,"Excess zinc induces intestinal metallothionein, which can trap copper and reduce its absorption."],
+
+["Kayser–Fleischer rings are most strongly associated with abnormal accumulation of:",
+["Copper","Fluoride","Iron","Iodine"],
+0,"Kayser–Fleischer rings result from copper deposition in Wilson disease."],
+
+["Which protein contains copper and participates in iron metabolism?",
+["Ceruloplasmin","Hemoglobin","Myoglobin","Ferritin"],
+0,"Ceruloplasmin is a copper-containing ferroxidase."],
+
+["Rare chromium deficiency has been associated with:",
+["Impaired glucose tolerance",
+"Dental fluorosis",
+"Goiter",
+"Keshan disease"],
+0,"Rare clinical chromium deficiency has been associated with impaired glucose regulation."],
+
+["Which food is a useful dietary source of copper?",
+["Cashews","Refined sugar","Plain water","Vegetable oil"],
+0,"Nuts, seeds, shellfish, and chocolate provide copper."]
+]
+},
+
+{
+name:"Iodine & Selenium",
+subtitle:"Thyroid hormones, antioxidant enzymes, and deficiency disorders",
+lesson:`
+<h3>Iodine</h3>
+<p>Iodine is required for the production of
+thyroid hormones, which help regulate
+metabolic activity, growth, and development.</p>
+
+<p>Inadequate iodine can reduce thyroid hormone
+production and stimulate thyroid enlargement.</p>
+
+<p><b>Goiter:</b> Enlargement of the thyroid gland.</p>
+
+<p><b>Severe iodine deficiency during pregnancy:</b>
+May impair fetal brain development and cause
+serious developmental consequences.</p>
+
+<h3>Goitrogens</h3>
+<p>Goitrogens are substances that can interfere
+with thyroid hormone production, particularly
+when iodine intake is inadequate.</p>
+
+<p>Some naturally occurring goitrogenic compounds
+are found in:</p>
+<ul>
+<li>Cabbage</li>
+<li>Broccoli and other cruciferous vegetables</li>
+<li>Soybeans</li>
+<li>Certain other plant foods</li>
+</ul>
+
+<p>Normal consumption of these nutritious foods
+is generally not a concern for people with
+adequate iodine intake.</p>
+
+<h3>Selenium</h3>
+<p>Selenium is incorporated into specialized
+proteins called <b>selenoproteins</b>.</p>
+
+<p>Important functions include:</p>
+<ul>
+<li>Antioxidant protection</li>
+<li>Thyroid hormone metabolism</li>
+<li>Protection against oxidative damage</li>
+</ul>
+
+<h3>Glutathione Peroxidase</h3>
+<p>Glutathione peroxidase is a selenium-containing
+enzyme that helps reduce damaging peroxides.</p>
+
+<p>By helping control oxidative damage, selenium
+works alongside other antioxidant defense systems,
+including vitamin E.</p>
+
+<h3>Keshan Disease</h3>
+<p>Keshan disease is a form of cardiomyopathy
+historically associated with severe selenium
+deficiency in certain geographic regions.</p>
+
+<h3>Food Sources</h3>
+<div class="grid">
+<div class="card">
+<b>Iodine</b>
+<p>Iodized salt, seafood, dairy products,
+and certain seaweeds.</p>
+</div>
+<div class="card">
+<b>Selenium</b>
+<p>Brazil nuts, seafood, meat, and grains.</p>
+</div>
+</div>
+
+<div class="callout">
+<b>Remember:</b><br>
+Iodine → thyroid hormones and goiter.<br>
+Selenium → glutathione peroxidase and Keshan disease.
+</div>`,
+questions:[
+["Which mineral is a structural component of thyroid hormones?",
+["Selenium","Iodine","Copper","Zinc"],
+1,"Iodine is required to synthesize T3 and T4."],
+
+["What is a goiter?",
+["Enlargement of the thyroid gland",
+"Inflammation of the pancreas",
+"Excess iron storage",
+"Damage to tooth enamel"],
+0,"A goiter is thyroid enlargement and can occur with iodine deficiency."],
+
+["Which food group contains naturally occurring goitrogenic compounds?",
+["Cruciferous vegetables",
+"Refined vegetable oils",
+"Plain table sugar",
+"Unflavored gelatin"],
+0,"Cruciferous vegetables contain compounds that can affect thyroid hormone synthesis under certain conditions."],
+
+["Which trace mineral is required for glutathione peroxidase?",
+["Iron","Selenium","Fluoride","Chromium"],
+1,"Glutathione peroxidase is a selenium-dependent antioxidant enzyme."],
+
+["Keshan disease is associated with deficiency of:",
+["Selenium","Iodine","Zinc","Copper"],
+0,"Severe selenium deficiency is associated with Keshan cardiomyopathy."],
+
+["Which food may provide especially high amounts of selenium?",
+["Brazil nuts","Cucumbers","Apples","Refined sugar"],
+0,"Brazil nuts can contain exceptionally high amounts of selenium, depending on growing conditions."],
+
+["Why is adequate iodine particularly important during pregnancy?",
+["It supports fetal brain and nervous system development",
+"It prevents every congenital condition",
+"It replaces folate",
+"It eliminates the need for thyroid hormones"],
+0,"Maternal thyroid hormone production and adequate iodine are critical for fetal neurodevelopment."]
+]
+},
+
+{
+name:"Fluoride & Manganese",
+subtitle:"Dental health, enzyme function, and toxicity recognition",
+lesson:`
+<h3>Fluoride</h3>
+<p>Fluoride supports resistance to dental caries
+by strengthening tooth enamel and promoting
+remineralization.</p>
+
+<p>Common sources include fluoridated drinking
+water, tea, and certain seafood.</p>
+
+<h3>Dental Fluorosis</h3>
+<p>Excess fluoride exposure while permanent
+teeth are developing may produce dental fluorosis.</p>
+
+<p>Possible findings include:</p>
+<ul>
+<li>White spots or streaks</li>
+<li>Discoloration</li>
+<li>Enamel pitting in more severe cases</li>
+</ul>
+
+<p>Excessive long-term exposure may also
+cause skeletal fluorosis.</p>
+
+<h3>Manganese</h3>
+<p>Manganese acts as a cofactor for enzymes
+involved in metabolism and antioxidant defense.</p>
+
+<p>Dietary sources include whole grains,
+nuts, legumes, and tea.</p>
+
+<p><b>Manganese toxicity:</b> Excessive exposure,
+particularly through inhalation in occupational
+settings, can damage the nervous system.</p>
+
+<p>Symptoms may resemble Parkinsonism,
+including movement difficulties.</p>
+
+<div class="callout">
+<b>Clinical recognition:</b><br>
+Pitted or discolored teeth → fluoride excess.<br>
+Parkinson-like neurological symptoms →
+manganese toxicity.
+</div>`,
+questions:[
+["Which mineral helps protect tooth enamel against dental caries?",
+["Fluoride","Copper","Iron","Iodine"],
+0,"Fluoride promotes enamel remineralization and increases resistance to tooth decay."],
+
+["A child develops enamel discoloration and pitting after excessive mineral exposure. Which mineral is implicated?",
+["Selenium","Fluoride","Zinc","Chromium"],
+1,"Excess fluoride exposure during tooth development can cause dental fluorosis."],
+
+["Excessive exposure to which mineral can cause neurological symptoms resembling Parkinsonism?",
+["Manganese","Iodine","Fluoride","Selenium"],
+0,"Manganese neurotoxicity can cause movement abnormalities resembling Parkinsonism."],
+
+["Which food commonly contributes manganese to the diet?",
+["Whole grains and nuts",
+"Refined sugar",
+"Plain vegetable oil",
+"Distilled water"],
+0,"Whole grains, nuts, legumes, and tea are dietary manganese sources."],
+
+["Which statement about fluoride is accurate?",
+["It contributes to dental caries prevention",
+"It is a major component of hemoglobin",
+"It produces thyroid hormones",
+"It transports iron in blood"],
+0,"Fluoride strengthens enamel and helps reduce dental caries."]
+]
+},
+
+{
+name:"Clinical Connections",
+subtitle:"Integrating signs, symptoms, absorption, and nutrition decisions",
+lesson:`
+<h3>Recognizing Clinical Patterns</h3>
+
+<div class="tablewrap"><table>
+<tr><th>Finding</th><th>Most Relevant Association</th></tr>
+<tr><td>Microcytic, hypochromic anemia</td><td>Iron deficiency</td></tr>
+<tr><td>Impaired taste, poor growth, weak immunity</td><td>Zinc deficiency</td></tr>
+<tr><td>Goiter</td><td>Iodine deficiency</td></tr>
+<tr><td>Keshan cardiomyopathy</td><td>Selenium deficiency</td></tr>
+<tr><td>Kayser–Fleischer rings</td><td>Copper accumulation</td></tr>
+<tr><td>Discolored or pitted enamel</td><td>Fluoride toxicity</td></tr>
+<tr><td>Parkinson-like neurological findings</td><td>Manganese toxicity</td></tr>
+<tr><td>Impaired glucose tolerance in rare deficiency</td><td>Chromium</td></tr>
+</table></div>
+
+<h3>Think Like a Nutrition Professional</h3>
+<p>When evaluating possible mineral problems,
+consider:</p>
+<ul>
+<li>Dietary intake and food patterns</li>
+<li>Life stage and physiological needs</li>
+<li>Supplement use</li>
+<li>Medical conditions and medications</li>
+<li>Possible interactions between nutrients</li>
+<li>Clinical and laboratory evidence</li>
+</ul>
+
+<div class="callout">
+<b>Important:</b> These associations are useful
+for exam preparation, but a single symptom
+does not establish a clinical diagnosis.
+</div>`,
+questions:[
+["A patient has fatigue and laboratory findings of small, pale red blood cells. Which deficiency is most likely?",
+["Iron","Iodine","Fluoride","Manganese"],
+0,"Iron deficiency anemia commonly produces microcytic, hypochromic red blood cells."],
+
+["An individual develops thyroid enlargement after prolonged inadequate mineral intake. Which deficiency is most relevant?",
+["Iodine","Copper","Fluoride","Chromium"],
+0,"Iodine deficiency can stimulate thyroid enlargement."],
+
+["A patient has poor wound healing, reduced taste perception, and frequent infections. Which mineral should be evaluated?",
+["Zinc","Selenium","Fluoride","Manganese"],
+0,"Zinc supports tissue repair, taste, and immune function."],
+
+["A patient has a genetic disorder involving copper accumulation. Which finding may be present?",
+["Kayser–Fleischer rings",
+"Dental fluorosis",
+"Microcytic anemia as the defining feature",
+"Goiter"],
+0,"Copper accumulation in Wilson disease can produce Kayser–Fleischer rings."],
+
+["Which clinical approach is most appropriate when mineral toxicity is suspected?",
+["Evaluate exposure, symptoms, and relevant laboratory findings",
+"Assume all supplements are safe",
+"Recommend high-dose supplementation immediately",
+"Ignore medical history"],
+0,"Assessment should integrate exposure history, clinical findings, and appropriate testing."],
+
+["Which statement about iron supplementation is most appropriate?",
+["Iron supplementation should be based on individual need",
+"Everyone should take high-dose iron",
+"Iron toxicity is impossible",
+"Food sources cannot provide iron"],
+0,"Supplementation should consider dietary intake, physiological status, laboratory findings, and medical conditions."]
+]
+}
+
+];
+
+const matching=[
+["Hepcidin","Liver hormone that decreases iron export"],
+["Ferroportin","Protein that exports iron from cells"],
+["Transferrin","Protein transporting iron in blood"],
+["Ferritin","Intracellular iron storage protein"],
+["Hephaestin","Intestinal ferroxidase involved in iron export"],
+["Ceruloplasmin","Copper-containing protein supporting iron oxidation"],
+["Zinc","Mineral supporting taste, growth, and immunity"],
+["Iodine","Mineral required for thyroid hormones"],
+["Selenium","Mineral incorporated into glutathione peroxidase"],
+["Fluoride","Mineral associated with dental fluorosis when excessive"],
+["Manganese","Excess exposure can cause Parkinson-like symptoms"],
+["Chromium","Rare deficiency associated with impaired glucose tolerance"]
+];
+
+const all=sections.flatMap((s,si)=>
+s.questions.map((q,qi)=>({
+id:"s"+si+"q"+qi,q
+})));
+
+const total=all.length+matching.length;
+const storageKey="nutr2351-ch13-trace-minerals-v1";
+
+let saved={};
+try{
+saved=JSON.parse(localStorage.getItem(storageKey)||"{}");
+}catch(e){}
+
+let page=-1;
+const nav=document.getElementById("nav");
+const content=document.getElementById("content");
+
+const labels=[
+"Start here",
+...sections.map(s=>s.name),
+"Matching lab",
+"Mastery challenge"
+];
+
+labels.forEach((label,i)=>{
+const b=document.createElement("button");
+b.textContent=label;
+b.onclick=()=>show(i-1);
+nav.appendChild(b);
+});
+
+function escapeHTML(value){
+return String(value).replace(/[&<>"']/g,c=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[c]));
+}
+
+function update(){
+const correctQuestions=all.filter(
+x=>saved[x.id]===x.q[2]
+).length;
+
+const correctMatches=matching.filter(
+(x,i)=>saved["m"+i]===i
+).length;
+
+const count=correctQuestions+correctMatches;
+const percent=Math.round(100*count/total);
+
+document.getElementById("score").textContent=
+count+" of "+total+" challenges correct ("+percent+"%)";
+
+document.getElementById("bar").style.width=percent+"%";
+}
+
+function persist(){
+try{
+localStorage.setItem(storageKey,JSON.stringify(saved));
+}catch(e){}
+update();
+}
+
+function questionBlock(q,id){
+const selected=saved[id];
+const answered=selected!==undefined;
+
+return `
+<div class="question">
+<h3>${escapeHTML(q[0])}</h3>
+<div class="options">
+${q[1].map((option,i)=>`
+<button
+class="option ${answered&&i===q[2]?"correct":""}
+${answered&&i===selected&&i!==q[2]?"wrong":""}"
+data-id="${id}"
+data-choice="${i}"
+${answered?"disabled":""}>
+${String.fromCharCode(65+i)}. ${escapeHTML(option)}
+</button>`).join("")}
+</div>
+${answered?`
+<div class="feedback">
+<strong>${selected===q[2]?"Correct!":"Not quite."}</strong>
+${escapeHTML(q[3])}
+</div>`:""}
+</div>`;
+}
+
+function attachQuestions(){
+content.querySelectorAll("[data-choice]").forEach(button=>{
+button.onclick=()=>{
+saved[button.dataset.id]=Number(button.dataset.choice);
+persist();
+show(page,false);
+};
+});
+}
+
+function sectionPage(index){
+const s=sections[index];
+return `
+<div class="panel">
+<span class="eyebrow">
+SECTION ${index+1} OF ${sections.length}
+</span>
+<h2>${escapeHTML(s.name)}</h2>
+<p class="muted">${escapeHTML(s.subtitle)}</p>
+<div class="lesson">${s.lesson}</div>
+<p class="pill">
+${s.questions.length} practice challenges
+</p>
+${s.questions.map((q,i)=>
+questionBlock(q,"s"+index+"q"+i)
+).join("")}
+</div>`;
+}
+
+function matchingPage(){
+return `
+<div class="panel">
+<span class="eyebrow">RETRIEVAL PRACTICE</span>
+<h2>Trace Mineral Matching Lab</h2>
+<p>
+Match each mineral, protein, or hormone
+to its best description.
+</p>
+<p class="muted">
+You may change your answers until every
+match is correct.
+</p>
+${matching.map((item,i)=>`
+<div class="matchrow">
+<strong>${escapeHTML(item[0])}</strong>
+<select data-match="${i}">
+<option value="">Choose a description...</option>
+${matching.map((other,j)=>`
+<option value="${j}"
+${saved["m"+i]===j?"selected":""}>
+${escapeHTML(other[1])}
+</option>`).join("")}
+</select>
+</div>
+${saved["m"+i]!==undefined?`
+<div class="feedback">
+${saved["m"+i]===i?
+"Correct match.":
+"Not quite. Try a different description."}
+</div>`:""}
+`).join("")}
+</div>`;
+}
+
+function masteryPage(){
+const remaining=all.filter(
+x=>saved[x.id]!==x.q[2]
+);
+const unmatched=matching.filter(
+(x,i)=>saved["m"+i]!==i
+);
+
+const correct=total-remaining.length-unmatched.length;
+const percent=Math.round(correct/total*100);
+
+return `
+<div class="panel">
+<span class="eyebrow">MASTERY CHECK</span>
+<h2>Your Personalized Chapter 13 Review</h2>
+
+<div class="lesson">
+<h3>Your Current Mastery</h3>
+<p style="font-size:24px">
+<strong>${correct} of ${total} challenges correct</strong>
+</p>
+<p><strong>${percent}% mastery</strong></p>
+<p>
+${percent>=90?
+"Excellent progress! Continue reviewing any remaining concepts.":
+percent>=75?
+"Good progress! Focus on the questions you have not mastered.":
+"Keep practicing! Revisit the lessons and use the feedback to strengthen your understanding."}
+</p>
+</div>
+
+<p>
+You have <strong>${remaining.length}</strong>
+multiple-choice challenges and
+<strong>${unmatched.length}</strong>
+matching challenges not yet correct.
+</p>
+
+<div class="lesson">
+<h3>High-Priority Exam Connections</h3>
+<ul>
+<li>Explain hepcidin, ferroportin, transferrin,
+ferritin, hephaestin, and ceruloplasmin.</li>
+<li>Distinguish heme and nonheme iron.</li>
+<li>Identify factors that enhance or inhibit
+iron absorption.</li>
+<li>Recall adult iron RDAs and the increased
+requirements during pregnancy.</li>
+<li>Recognize hemochromatosis and iron overload.</li>
+<li>Connect zinc to taste, growth, immunity,
+and wound healing.</li>
+<li>Identify iodine deficiency and goitrogens.</li>
+<li>Connect selenium to glutathione peroxidase
+and Keshan disease.</li>
+<li>Recognize copper, fluoride, manganese,
+and chromium-related clinical patterns.</li>
+<li>Match trace minerals to major food sources.</li>
+</ul>
+</div>
+
+${remaining.length?`
+<h3>Questions to Revisit</h3>
+<p class="muted">
+Return to the corresponding sections to
+review the following concepts.
+</p>
+${remaining.slice(0,20).map(x=>`
+<p>• ${escapeHTML(x.q[0])}</p>
+`).join("")}
+`:
+"<p><strong>Excellent! All multiple-choice challenges are correct.</strong></p>"
+}
+
+${unmatched.length?`
+<h3>Matching Concepts to Review</h3>
+${unmatched.map(x=>`
+<p>• ${escapeHTML(x[0])}</p>
+`).join("")}
+`:
+"<p><strong>All matching challenges are correct!</strong></p>"
+}
+
+<div class="callout">
+<b>Before Exam 4:</b>
+Be sure you can explain why an answer is
+correct, not simply recognize the correct option.
+Understanding the physiological mechanisms
+will help you apply the concepts to new scenarios.
+</div>
+
+<button id="reset" class="option">
+Reset all progress and practice again
+</button>
+</div>`;
+}
+
+function show(next,scroll=true){
+page=next;
+
+[...nav.children].forEach((button,i)=>{
+button.classList.toggle("active",i===next+1);
+});
+
+if(next===-1){
+content.innerHTML=`
+<div class="panel">
+<span class="eyebrow">WELCOME</span>
+<h2>Your Interactive Exam 4 Review</h2>
+
+<p>
+Welcome to your Chapter 13 study guide!
+This resource focuses on the essential
+trace minerals and the concepts you will
+need to understand for Exam 4.
+</p>
+
+<div class="lesson">
+<h3>How to Use This Guide</h3>
+<ol>
+<li>Begin with the foundational concepts.</li>
+<li>Read each short instructional lesson.</li>
+<li>Answer the interactive practice questions.</li>
+<li>Review the immediate feedback and explanations.</li>
+<li>Complete the matching lab.</li>
+<li>Finish with your personalized mastery challenge.</li>
+</ol>
+
+<p>
+Each question provides immediate feedback.
+Your progress is saved in this browser
+and <b>is not submitted to Canvas</b>.
+</p>
+</div>
+
+<h3>What You'll Study</h3>
+
+<div class="grid">
+<div class="card">
+<b>Iron</b>
+<p>Absorption, transport, storage,
+regulation, requirements, and toxicity.</p>
+</div>
+<div class="card">
+<b>Zinc and Copper</b>
+<p>Growth, immunity, taste, iron metabolism,
+and clinical disorders.</p>
+</div>
+<div class="card">
+<b>Iodine and Selenium</b>
+<p>Thyroid function, antioxidants,
+and deficiency disorders.</p>
+</div>
+<div class="card">
+<b>Fluoride and Manganese</b>
+<p>Dental health, enzyme functions,
+and toxicity recognition.</p>
+</div>
+</div>
+
+<div class="callout">
+<b>Study Tip:</b>
+For every mineral, be able to identify its
+primary function, major food sources,
+deficiency symptoms, and possible toxicity.
+</div>
+
+<p class="pill">${total} interactive challenges</p>
+
+<p>
+These original practice questions are
+designed to reinforce the concepts emphasized
+in Chapter 13, rather than reproduce
+questions from the actual examination.
+</p>
+</div>`;
+}
+
+else if(next<sections.length){
+content.innerHTML=sectionPage(next);
+attachQuestions();
+}
+
+else if(next===sections.length){
+content.innerHTML=matchingPage();
+
+content.querySelectorAll("[data-match]").forEach(select=>{
+select.onchange=()=>{
+const i=Number(select.dataset.match);
+
+if(select.value===""){
+delete saved["m"+i];
+}else{
+saved["m"+i]=Number(select.value);
+}
+
+persist();
+show(page,false);
+};
+});
+}
+
+else{
+content.innerHTML=masteryPage();
+
+document.getElementById("reset").onclick=()=>{
+if(confirm("Clear all Chapter 13 practice progress?")){
+saved={};
+persist();
+show(-1);
+}
+};
+}
+
+document.getElementById("previous").disabled=next===-1;
+document.getElementById("next").disabled=
+next===sections.length+1;
+
+update();
+
+if(scroll){
+window.scrollTo({top:0,behavior:"smooth"});
+}
+}
+
+document.getElementById("previous").onclick=()=>{
+show(Math.max(-1,page-1));
+};
+
+document.getElementById("next").onclick=()=>{
+show(Math.min(sections.length+1,page+1));
+};
+
+show(-1);
+</script>
+</body>
+</html>
+
