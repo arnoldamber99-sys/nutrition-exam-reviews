@@ -1,1 +1,38 @@
 
+function questionBlock(q,id){
+  const selected=saved[id];
+  const answered=selected!==undefined;
+  const mastered=selected===q[2];
+
+  return `
+  <div class="question">
+    <h3>${escapeHTML(q[0])}</h3>
+
+    <div class="options">
+      ${q[1].map((option,i)=>`
+        <button
+          class="option
+          ${answered&&i===q[2]?"correct":""}
+          ${answered&&i===selected&&!mastered?"wrong":""}"
+          data-id="${id}"
+          data-choice="${i}"
+          ${mastered?"disabled":""}>
+          ${String.fromCharCode(65+i)}.
+          ${escapeHTML(option)}
+        </button>
+      `).join("")}
+    </div>
+
+    ${answered?`
+      <div class="feedback">
+        <strong>
+          ${mastered?
+            "Correct! You've mastered this question.":
+            "Not quite. Review the explanation and try again."}
+        </strong>
+        <p>${escapeHTML(q[3])}</p>
+      </div>
+    `:""}
+  </div>`;
+}
+
