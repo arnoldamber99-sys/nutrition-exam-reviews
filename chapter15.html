@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NUTR 2351 | Chapter 15 — Weight Management</title>
+  <style>
+    :root {
+      --green: #154734;
+      --deep-green: #103f33;
+      --gold: #ffb81c;
+      --ink: #20352e;
+      --muted: #4d6056;
+      --line: #cbdad0;
+      --soft: #f1f6f2;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f7f9f8;
+      color: var(--ink);
+      font: 1rem/1.6 system-ui, sans-serif;
+    }
+    header {
+      background: linear-gradient(115deg, var(--deep-green), #245d49);
+      border-bottom: 5px solid var(--gold);
+      color: white;
+    }
+    .hero { max-width: 1320px; margin: auto; padding: 2.2rem 1.5rem; }
+    .course {
+      color: var(--gold);
+      font-size: .83rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.13; margin: .55rem 0; }
+    h2 { font-size: clamp(1.55rem, 3vw, 2rem); line-height: 1.2; margin: 0; }
+    h3 { line-height: 1.35; }
+    p { margin: .65rem 0; }
+    a { color: var(--green); text-underline-offset: .17em; }
+    header a { color: white; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    button:disabled { cursor: default; opacity: .55; }
+    :focus-visible { outline: 3px solid #946000; outline-offset: 3px; }
+    header :focus-visible { outline-color: var(--gold); }
+    .skip { position: absolute; top: .5rem; left: .5rem; background: white; padding: .6rem; }
+    .skip:not(:focus) { clip-path: inset(50%); }
+    progress {
+      display: block;
+      width: min(100%, 42rem);
+      height: .8rem;
+      appearance: none;
+      border: 0;
+      border-radius: 1rem;
+      background: #dce9df;
+      overflow: hidden;
+    }
+    progress::-webkit-progress-bar { background: #dce9df; }
+    progress::-webkit-progress-value { background: var(--gold); }
+    progress::-moz-progress-bar { background: var(--gold); }
+    .layout {
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 1fr);
+      gap: 1.5rem;
+      max-width: 1320px;
+      margin: auto;
+      padding: 1.5rem;
+      align-items: start;
+    }
+    nav { display: grid; gap: .55rem; position: sticky; top: 1rem; }
+    nav h2 { font-size: 1rem; margin-bottom: .2rem; }
+    nav button, .option, .secondary, .primary {
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      background: white;
+      padding: .65rem .85rem;
+    }
+    nav button { text-align: left; font-size: .94rem; font-weight: 650; }
+    nav button[aria-current="true"], .primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+    .option:hover, .secondary:hover, nav button:hover:not([aria-current="true"]) {
+      background: var(--soft);
+    }
+    .panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+    .muted { color: var(--muted); font-size: .92rem; }
+    .lesson { background: var(--soft); border-radius: .8rem; padding: .8rem 1rem; }
+    .lesson ul { padding-left: 1.3rem; margin: .55rem 0; }
+    .lesson li + li { margin-top: .55rem; }
+    .example {
+      background: #fff5d8;
+      border-left: 4px solid var(--gold);
+      padding: .65rem .85rem;
+      margin-top: .9rem;
+    }
+    .question { border-top: 1px solid var(--line); padding: 1rem 0; }
+    .question h3 { font-size: 1.02rem; margin: 0 0 .65rem; }
+    .options { display: grid; gap: .45rem; }
+    .option { width: 100%; text-align: left; overflow-wrap: anywhere; }
+    .option[aria-disabled="true"] { cursor: default; }
+    .option.correct { border-color: #27774c; background: #e4f4e9; }
+    .option.incorrect { border-color: #a94b43; background: #fff0ed; }
+    .feedback:not(:empty) { margin-top: .7rem; padding: .6rem .8rem; background: var(--soft); }
+    .retry { margin-top: .55rem; }
+    .controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; }
+    [hidden] { display: none !important; }
+
+    @media (max-width: 760px) {
+      .layout { grid-template-columns: 1fr; padding: 1rem; gap: 1rem; }
+      .hero { padding: 1.5rem 1rem; }
+      nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      nav h2 { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to study guide</a>
+  <header>
+    <div class="hero">
+      <div class="course">BAYLOR UNIVERSITY · NUTR 2351 · EXAM 4</div>
+      <h1>Chapter 15 — Weight Management</h1>
+      <p>Review the concepts, then choose an answer to get immediate feedback.</p>
+      <p><a href="chapter14.html">← Chapter 14 — Energy Balance &amp; Body Composition</a></p>
+      <p id="progress-text" role="status">Loading practice progress…</p>
+      <progress id="progress" aria-label="Questions answered correctly" value="0"></progress>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav aria-labelledby="sections-heading" id="navigation">
+      <h2 id="sections-heading">Study sections</h2>
+    </nav>
+    <main id="main" tabindex="-1">
+      <article class="panel" aria-labelledby="section-title">
+        <h2 id="section-title" tabindex="-1"></h2>
+        <p class="muted" id="section-progress"></p>
+        <div class="lesson" id="lesson"></div>
+        <h3>Practice questions</h3>
+        <div id="questions"></div>
+        <div class="controls">
+          <button class="secondary" id="previous" type="button">← Previous section</button>
+          <button class="primary" id="next" type="button">Next section →</button>
+        </div>
+      </article>
+      <p class="muted" id="storage-note">Progress is saved in this browser for self-study.</p>
+      <button class="secondary" id="reset" type="button">Reset all practice</button>
+      <noscript><p>Enable JavaScript to use the study sections and practice questions.</p></noscript>
+    </main>
+  </div>
+
+  <script>
+    "use strict";
+
+    // Questions use stable IDs so saved answers remain tied to the right question.
+    const sections = [
+      {
+        name: "BMI, Waist & IBW",
+        lesson: `
+          <ul>
+            <li><strong>Adult BMI:</strong> Divide kilograms by meters squared, or calculate
+              703 × pounds ÷ inches squared. For feet and inches, multiply feet by 12,
+              then add the remaining inches.</li>
+            <li><strong>Adult categories:</strong> Underweight is below 18.5, healthy weight
+              is 18.5 to below 25, overweight is 25 to below 30, and obesity starts at 30.
+              Class 3 (severe) obesity starts at 40. Use the unrounded result to classify.
+              BMI is a screening measure based on weight and height.</li>
+            <li><strong>Waist circumference:</strong> Android fat distribution refers to
+              central or abdominal fat. Remember the course cutoff of
+              <strong>35 inches for women</strong> when reviewing abdominal risk.</li>
+            <li><strong>Estimated ideal body weight (IBW):</strong> For the classroom
+              equation, start at 106 lb for men at 5 ft and add 6 lb per inch above 5 ft.
+              For women, start at 100 lb and add 5 lb per inch. A ±10% range runs
+              from 0.90 × the estimate to 1.10 × the estimate.</li>
+          </ul>
+          <p class="example"><strong>Worked examples</strong><br>
+            BMI for 150 lb at 5 ft 5 in = 703 × 150 ÷ 65² ≈ 25.0 (overweight).<br>
+            Estimated IBW for a woman at 5 ft 4 in = 100 + 5 × 4 = 120 lb.
+            The ±10% range is 108–132 lb.</p>`,
+        questions: [
+          {
+            id: "bmi-calc",
+            prompt: "What is the approximate BMI of an adult who weighs 196 lb and is 5 ft 8 in tall?",
+            options: ["26.0", "29.8", "32.4", "40.2"],
+            answer: 1,
+            hint: "Convert the height to 68 inches and square it before dividing.",
+            explanation: "703 × 196 ÷ 68² ≈ 29.8, which falls in the overweight category."
+          },
+          {
+            id: "bmi-category",
+            prompt: "An adult has an unrounded BMI of 40.3. Which is the most specific category listed?",
+            options: ["Overweight", "Healthy weight", "Class 1 obesity", "Class 3 obesity"],
+            answer: 3,
+            hint: "Find the category that begins at 40.",
+            explanation: "Class 3 obesity begins at a BMI of 40."
+          },
+          {
+            id: "bmi-boundary",
+            prompt: "An adult's BMI is 24.96 before rounding. Which category does that value fall into?",
+            options: ["Underweight", "Overweight", "Healthy weight", "Class 1 obesity"],
+            answer: 2,
+            hint: "Compare the original number directly with 25.",
+            explanation: "24.96 is below 25 and at least 18.5, so it falls in the healthy-weight category."
+          },
+          {
+            id: "waist",
+            prompt: "A woman has a waist circumference of 36 inches. How does this compare with the course cutoff for abdominal risk?",
+            options: ["It is above the 35-inch cutoff.", "It is below the 40-inch cutoff for women.",
+                      "It is exactly at the 36-inch cutoff.", "The comparison requires knowing her height."],
+            answer: 0,
+            hint: "Recall the course's cutoff for women's waist circumference.",
+            explanation: "36 inches exceeds the 35-inch course cutoff associated with central fat distribution in women."
+          },
+          {
+            id: "ibw-men",
+            prompt: "Using the classroom equation, what is the estimated IBW for a man who is 5 ft 8 in tall?",
+            options: ["140 lb", "148 lb", "154 lb", "166 lb"],
+            answer: 2,
+            hint: "Start at 106 lb and use 8 inches above 5 ft.",
+            explanation: "106 + 6 × 8 = 154 lb."
+          },
+          {
+            id: "ibw-range",
+            prompt: "Is 151 lb within the classroom ±10% IBW range for a woman who is 5 ft 8 in tall?",
+            options: ["Yes, the range is 126–154 lb.", "Yes, the range is 135–165 lb.",
+                      "No, the upper end is 140 lb.", "No, the lower end is 154 lb."],
+            answer: 0,
+            hint: "Calculate the 140-lb estimate first, then take 10% of it.",
+            explanation: "100 + 5 × 8 = 140 lb. Ten percent is 14 lb, giving 126–154 lb."
+          }
+        ]
+      },
+      {
+        name: "Hunger & Satiety",
+        lesson: `
+          <ul>
+            <li><strong>Ghrelin:</strong> Produced mainly in the stomach. It often rises
+              before meals and promotes hunger.</li>
+            <li><strong>Leptin:</strong> Produced mainly by fat cells. It signals stored
+              energy to the brain and generally acts to reduce hunger.</li>
+            <li><strong>Cholecystokinin (CCK):</strong> Released by the small intestine in
+              response to food. It helps bring a meal to an end.</li>
+            <li><strong>Peptide YY (PYY):</strong> Released by the gut after eating and
+              contributes to fullness. For the course comparison, CCK and PYY are linked
+              to decreased hunger and increased satiety.</li>
+          </ul>`,
+        questions: [
+          {
+            id: "ghrelin",
+            prompt: "Which hormone helps explain increased hunger shortly before a meal?",
+            options: ["Leptin", "CCK", "PYY", "Ghrelin"],
+            answer: 3,
+            hint: "Think of the hunger-promoting signal produced mainly in the stomach.",
+            explanation: "Ghrelin often rises before meals and promotes hunger."
+          },
+          {
+            id: "leptin",
+            prompt: "Which pairing correctly identifies a signal from fat cells and its general effect on hunger?",
+            options: ["Ghrelin — reduces hunger", "Leptin — reduces hunger",
+                      "PYY — increases hunger", "CCK — increases hunger"],
+            answer: 1,
+            hint: "Fat cells signal stored energy through a hormone involved in long-term regulation.",
+            explanation: "Fat cells release leptin, which signals stored energy and generally acts to reduce hunger."
+          },
+          {
+            id: "gut-peptides",
+            prompt: "Which pair of gut signals supports fullness during or after a meal?",
+            options: ["CCK and PYY", "Ghrelin and leptin", "Ghrelin and PYY", "Ghrelin and CCK"],
+            answer: 0,
+            hint: "Look for two meal-related gut signals that reduce intake.",
+            explanation: "CCK helps end a meal, and PYY contributes to post-meal fullness."
+          }
+        ]
+      },
+      {
+        name: "Weight Regulation & Goals",
+        lesson: `
+          <ul>
+            <li><strong>Set point theory:</strong> This theory proposes a biologically
+              influenced body weight or range that the body tends to defend. Changes in
+              appetite and expenditure can make weight change harder to sustain.</li>
+            <li><strong>Fat cell changes:</strong> Hypertrophy means existing cells get
+              larger. Hyperplasia means cell number increases.</li>
+            <li><strong>Energy balance:</strong> Weight tends to decrease over time when
+              energy intake is below expenditure. A smaller body often expends less
+              energy, so its maintenance needs can be lower after weight loss.</li>
+            <li><strong>Course calculations:</strong> For a six-month example targeting
+              10% of starting weight, multiply starting weight by 0.10. For the
+              maintenance-calorie exercise, use the classroom approximation of
+              8 fewer kcal per day per pound lost. Actual maintenance needs vary.</li>
+            <li><strong>National Weight Control Registry (NWCR):</strong> The registry
+              studies people who have lost substantial weight and maintained the loss
+              over time.</li>
+          </ul>
+          <p class="example"><strong>Worked examples</strong><br>
+            A 10% goal at 180 lb is a loss of 18 lb, for a target of 162 lb.<br>
+            After a 25-lb loss, the classroom estimate is 25 × 8 = 200 fewer kcal/day
+            for maintenance than before the loss.</p>`,
+        questions: [
+          {
+            id: "set-point",
+            prompt: "Which theory proposes that the body tends to defend a biologically influenced weight or weight range?",
+            options: ["Stimulus control", "Energy density", "Set point theory", "Thermic effect of food"],
+            answer: 2,
+            hint: "Look for the theory that describes a weight level the body tends to defend.",
+            explanation: "Set point theory describes a biologically influenced weight or range the body tends to defend."
+          },
+          {
+            id: "hyperplasia",
+            prompt: "An adipose tissue sample has more fat cells, with little change in their average size. What is this called?",
+            options: ["Hypertrophy", "Hyperplasia", "Thermogenesis", "Satiation"],
+            answer: 1,
+            hint: "Focus on the change in cell number.",
+            explanation: "Hyperplasia is an increase in cell number. Hypertrophy is an increase in cell size."
+          },
+          {
+            id: "hypertrophy",
+            prompt: "Existing fat cells grow larger as they store more triglyceride. Which term fits?",
+            options: ["Hyperplasia", "Hyperglycemia", "Hypertrophy", "Thermogenesis"],
+            answer: 2,
+            hint: "The cells are growing in size.",
+            explanation: "Hypertrophy describes enlargement of existing cells."
+          },
+          {
+            id: "goal",
+            prompt: "An adult starts at 240 lb. What is the target weight after a 10% loss?",
+            options: ["216 lb", "220 lb", "224 lb", "230 lb"],
+            answer: 0,
+            hint: "Find 10% of 240, then subtract that amount from the starting weight.",
+            explanation: "240 × 0.10 = 24 lb. The target weight is 240 − 24 = 216 lb."
+          },
+          {
+            id: "maintenance",
+            prompt: "Using the course approximation, how much lower are estimated daily maintenance needs after a 30-lb loss?",
+            options: ["80 kcal/day", "150 kcal/day", "300 kcal/day", "240 kcal/day"],
+            answer: 3,
+            hint: "Multiply pounds lost by 8 kcal/day per pound.",
+            explanation: "30 × 8 = 240 fewer kcal/day under that approximation."
+          },
+          {
+            id: "balance",
+            prompt: "What pattern describes negative energy balance over time?",
+            options: ["Intake exceeds expenditure.", "Expenditure exceeds intake.",
+                      "Intake and expenditure are equal.", "Intake exceeds expenditure only during meals."],
+            answer: 1,
+            hint: "Energy balance is intake minus expenditure.",
+            explanation: "Energy balance is negative when more energy is expended than consumed."
+          },
+          {
+            id: "registry",
+            prompt: "Which group best fits the focus of the National Weight Control Registry?",
+            options: ["Adults who have maintained a substantial weight loss",
+                      "Adults enrolled at the start of a first weight-loss attempt",
+                      "Athletes selected for increases in muscle mass",
+                      "Adults selected for stable weight without prior weight loss"],
+            answer: 0,
+            hint: "The registry studies long-term maintenance after weight loss.",
+            explanation: "It studies people who lost substantial weight and have kept it off over time."
+          }
+        ]
+      },
+      {
+        name: "Behavior Change",
+        lesson: `
+          <ul>
+            <li><strong>Antecedent (A):</strong> A cue or event that comes before the
+              behavior, such as a notification announcing a break.</li>
+            <li><strong>Behavior (B):</strong> The observable action, such as taking a
+              short walk during the break.</li>
+            <li><strong>Consequence (C):</strong> What follows the behavior, such as
+              feeling refreshed afterward.</li>
+            <li><strong>Self-monitoring</strong> records behaviors or cues so patterns
+              are easier to see. <strong>Stimulus control</strong> changes cues in the
+              environment to make a chosen behavior easier.</li>
+            <li><strong>Mindful eating</strong> means paying attention to the present
+              eating experience, including flavor, texture, aroma, hunger, and fullness.</li>
+          </ul>`,
+        questions: [
+          {
+            id: "antecedent",
+            prompt: "A phone reminder sounds. A student then takes a walk and feels more alert afterward. What is the antecedent?",
+            options: ["Taking the walk", "Feeling more alert", "The phone reminder", "The walk and the alertness together"],
+            answer: 2,
+            hint: "Identify what happened immediately before the action.",
+            explanation: "The reminder is the cue that precedes the walk."
+          },
+          {
+            id: "consequence",
+            prompt: "A student logs lunch, then notices that writing it down makes meal planning easier. Which part is the consequence?",
+            options: ["Eating lunch", "Finding meal planning easier", "Opening the log", "Writing down lunch"],
+            answer: 1,
+            hint: "Look for what follows the behavior of logging.",
+            explanation: "Finding meal planning easier is the outcome that follows logging."
+          },
+          {
+            id: "stimulus-control",
+            prompt: "Which action is the clearest example of stimulus control?",
+            options: ["Writing down each walk after it ends", "Calculating the total time walked last week",
+                      "Comparing two routes after walking both", "Putting walking shoes beside the door as a cue"],
+            answer: 3,
+            hint: "Choose the action that deliberately changes a cue in the environment.",
+            explanation: "Visible shoes create a prompt before the desired behavior."
+          },
+          {
+            id: "mindful",
+            prompt: "During lunch, someone pauses to notice the aroma and texture of the food, then checks how full they feel. What are they practicing?",
+            options: ["Mindful eating", "Stimulus control", "Portion estimation", "Dietary recall"],
+            answer: 0,
+            hint: "Focus on attention to the senses and internal cues during the meal.",
+            explanation: "Present-moment awareness of sensory experiences and fullness is mindful eating."
+          }
+        ]
+      },
+      {
+        name: "Bariatric Procedures",
+        lesson: `
+          <ul>
+            <li><strong>Roux-en-Y gastric bypass:</strong> A small stomach pouch is
+              connected to a lower section of the small intestine, so food bypasses
+              most of the stomach and the first part of the small intestine.</li>
+            <li><strong>Sleeve gastrectomy:</strong> Much of the stomach is removed,
+              leaving a narrow sleeve. The intestinal route remains in place.</li>
+            <li><strong>Adjustable gastric banding:</strong> An adjustable band around
+              the upper stomach creates a small pouch. It is a restrictive operation
+              and generally produces less weight loss than sleeve or bypass.</li>
+            <li><strong>Duodenal switch:</strong> Combines a sleeve-shaped stomach
+              with extensive intestinal rerouting.</li>
+            <li><strong>Liposuction:</strong> Removes localized fat for body contouring.
+              Bariatric procedures in this section alter the digestive tract.</li>
+          </ul>`,
+        questions: [
+          {
+            id: "bypass",
+            prompt: "Which procedure creates a small stomach pouch and connects it directly to a lower segment of small intestine?",
+            options: ["Adjustable gastric banding", "Sleeve gastrectomy", "Liposuction", "Roux-en-Y gastric bypass"],
+            answer: 3,
+            hint: "Look for both a small pouch and an intestinal bypass.",
+            explanation: "Roux-en-Y connects a small stomach pouch to the jejunum, rerouting food past the upper part of the usual route."
+          },
+          {
+            id: "band",
+            prompt: "Which procedure uses an adjustable device around the upper stomach and generally produces less weight loss than sleeve or bypass?",
+            options: ["Adjustable gastric banding", "Duodenal switch", "Roux-en-Y gastric bypass", "Sleeve gastrectomy"],
+            answer: 0,
+            hint: "The device encircles the stomach.",
+            explanation: "An adjustable gastric band restricts the upper stomach opening and leaves the intestinal route in place."
+          },
+          {
+            id: "sleeve",
+            prompt: "Most of the stomach is removed, leaving a narrow tube, and the intestines follow their original route. Which procedure fits?",
+            options: ["Roux-en-Y gastric bypass", "Sleeve gastrectomy", "Gastric banding", "Duodenal switch"],
+            answer: 1,
+            hint: "The remaining stomach resembles a sleeve.",
+            explanation: "Sleeve gastrectomy removes part of the stomach and leaves the intestinal route in place."
+          }
+        ]
+      }
+    ];
+
+    const byId = (id) => document.getElementById(id);
+    const navigation = byId("navigation");
+    const sectionTitle = byId("section-title");
+    const sectionProgress = byId("section-progress");
+    const questions = byId("questions");
+    const progress = byId("progress");
+    const progressText = byId("progress-text");
+    const previous = byId("previous");
+    const next = byId("next");
+    const allQuestions = sections.flatMap((section) => section.questions);
+    const storageKey = "baylor-nutr2351-chapter15-v1";
+
+    let answers = {};
+    let sectionIndex = 0;
+
+    function showStorageUnavailable() {
+      byId("storage-note").textContent =
+        "This browser is blocking saved progress. Your answers are available while this page stays open.";
+    }
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
+      if (saved && typeof saved === "object") {
+        if (Number.isInteger(saved.section) && sections[saved.section]) {
+          sectionIndex = saved.section;
+        }
+        for (const question of allQuestions) {
+          const choice = saved.answers?.[question.id];
+          if (Number.isInteger(choice) && choice >= 0 && choice < question.options.length) {
+            answers[question.id] = choice;
+          }
+        }
+      }
+    } catch {
+      showStorageUnavailable();
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({ section: sectionIndex, answers }));
+      } catch {
+        showStorageUnavailable();
+      }
+    }
+
+    function correctCount(list) {
+      return list.filter((question) => answers[question.id] === question.answer).length;
+    }
+
+    function updateProgress() {
+      const total = allQuestions.length;
+      const correct = correctCount(allQuestions);
+      const percentage = Math.round(100 * correct / total);
+      progress.max = total;
+      progress.value = correct;
+      progressText.textContent = `${correct} of ${total} correct (${percentage}%)`;
+
+      const activeQuestions = sections[sectionIndex].questions;
+      sectionProgress.textContent =
+        `${correctCount(activeQuestions)} of ${activeQuestions.length} correct in this section`;
+
+      sectionButtons.forEach((button, index) => {
+        const section = sections[index];
+        button.textContent = `${section.name} (${correctCount(section.questions)}/${section.questions.length})`;
+        if (index === sectionIndex) {
+          button.setAttribute("aria-current", "true");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function renderQuestion(question, number) {
+      const card = document.createElement("section");
+      card.className = "question";
+
+      const heading = document.createElement("h3");
+      heading.id = `prompt-${question.id}`;
+      heading.textContent = `${number}. ${question.prompt}`;
+
+      const options = document.createElement("div");
+      options.className = "options";
+      options.setAttribute("role", "group");
+      options.setAttribute("aria-labelledby", heading.id);
+
+      const feedback = document.createElement("div");
+      feedback.id = `feedback-${question.id}`;
+      feedback.className = "feedback";
+      feedback.setAttribute("role", "status");
+
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "secondary retry";
+      retry.textContent = "Try again";
+      retry.setAttribute("aria-label", `Try question ${number} again`);
+
+      const optionButtons = question.options.map((option, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "option";
+        button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+        button.addEventListener("click", () => {
+          if (answers[question.id] !== undefined) return;
+          answers[question.id] = index;
+          paintAnswer();
+          updateProgress();
+          saveProgress();
+        });
+        options.append(button);
+        return button;
+      });
+
+      function paintAnswer() {
+        const choice = answers[question.id];
+        const answered = choice !== undefined;
+        const correct = choice === question.answer;
+
+        optionButtons.forEach((button, index) => {
+          const selected = choice === index;
+          button.classList.toggle("correct", selected && correct);
+          button.classList.toggle("incorrect", selected && !correct);
+          if (answered) {
+            button.setAttribute("aria-disabled", "true");
+          } else {
+            button.removeAttribute("aria-disabled");
+          }
+          if (selected) {
+            button.setAttribute("aria-describedby", feedback.id);
+          } else {
+            button.removeAttribute("aria-describedby");
+          }
+        });
+
+        retry.hidden = !answered || correct;
+        feedback.textContent = "";
+        if (answered) {
+          feedback.textContent = correct
+            ? `Correct. ${question.explanation}`
+            : `Try again. ${question.hint}`;
+        }
+      }
+
+      retry.addEventListener("click", () => {
+        delete answers[question.id];
+        paintAnswer();
+        updateProgress();
+        saveProgress();
+        optionButtons[0].focus();
+      });
+
+      card.append(heading, options, feedback, retry);
+      paintAnswer();
+      return card;
+    }
+
+    const sectionButtons = sections.map((section, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.addEventListener("click", () => showSection(index, true));
+      navigation.append(button);
+      return button;
+    });
+
+    function showSection(index, moveFocus = false) {
+      sectionIndex = index;
+      const section = sections[index];
+      sectionTitle.textContent = section.name;
+
+      // Lesson markup is authored above and contains no saved or user-entered data.
+      byId("lesson").innerHTML = section.lesson;
+      questions.replaceChildren(
+        ...section.questions.map((question, position) => renderQuestion(question, position + 1))
+      );
+
+      previous.disabled = index === 0;
+      next.disabled = index === sections.length - 1;
+      updateProgress();
+
+      if (moveFocus) {
+        saveProgress();
+        sectionTitle.focus();
+        sectionTitle.scrollIntoView({ block: "start" });
+      }
+    }
+
+    previous.addEventListener("click", () => showSection(sectionIndex - 1, true));
+    next.addEventListener("click", () => showSection(sectionIndex + 1, true));
+
+    byId("reset").addEventListener("click", () => {
+      if (!window.confirm("Clear all answers and start again from the first section?")) return;
+      answers = {};
+      showSection(0, true);
+    });
+
+    showSection(sectionIndex);
+  </script>
+</body>
+</html>
