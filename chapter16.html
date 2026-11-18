@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUTR 2351 | Chapter 16 — Nutrition and Fitness</title>
+<style>
+  :root {
+    --green: #154734;
+    --deep: #103f33;
+    --gold: #ffb81c;
+    --ink: #20352e;
+    --muted: #506459;
+    --line: #cbdad0;
+    --soft: #f1f6f2;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #f7f9f8;
+    color: var(--ink);
+    font: 17px/1.6 Arial, sans-serif;
+  }
+
+  header {
+    background: linear-gradient(115deg, var(--deep), #245d49);
+    border-bottom: 5px solid var(--gold);
+    color: white;
+  }
+
+  .hero {
+    max-width: 1320px;
+    margin: auto;
+    padding: 32px 24px;
+  }
+
+  .course {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.15;
+    margin: 12px 0;
+  }
+
+  h2 { line-height: 1.25; margin-top: 0; }
+  h3 { line-height: 1.35; }
+  p { margin: 10px 0; }
+  a { color: var(--green); }
+  header a { color: white; }
+
+  button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    opacity: .5;
+    cursor: default;
+  }
+
+  :focus-visible {
+    outline: 3px solid #946000;
+    outline-offset: 3px;
+  }
+
+  header :focus-visible { outline-color: var(--gold); }
+
+  .skip {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: white;
+    padding: 8px;
+    color: var(--green);
+  }
+
+  .skip:not(:focus) { clip-path: inset(50%); }
+
+  progress {
+    display: block;
+    width: min(100%, 720px);
+    height: 14px;
+    appearance: none;
+    border: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #dce9df;
+  }
+
+  progress::-webkit-progress-bar { background: #dce9df; }
+  progress::-webkit-progress-value { background: var(--gold); }
+  progress::-moz-progress-bar { background: var(--gold); }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 24px;
+    max-width: 1320px;
+    margin: auto;
+    padding: 24px;
+    align-items: start;
+  }
+
+  nav {
+    display: grid;
+    gap: 9px;
+    position: sticky;
+    top: 16px;
+  }
+
+  nav h2 { font-size: 18px; margin-bottom: 4px; }
+
+  nav button,
+  .option,
+  .secondary,
+  .primary {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: white;
+    padding: 12px 14px;
+  }
+
+  nav button {
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  nav button[aria-current="true"],
+  .primary {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+
+  nav button:hover:not([aria-current="true"]),
+  .secondary:hover,
+  .option:hover:not([aria-disabled="true"]) {
+    background: var(--soft);
+  }
+
+  main { min-width: 0; }
+
+  .panel {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: clamp(18px, 3vw, 32px);
+  }
+
+  .muted { color: var(--muted); font-size: 15px; }
+
+  .lesson {
+    background: var(--soft);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .lesson ul { padding-left: 22px; }
+  .lesson li + li { margin-top: 10px; }
+
+  .example {
+    background: #fff5d8;
+    border-left: 4px solid var(--gold);
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+
+  .question {
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+  }
+
+  .question h3 { font-size: 18px; margin: 0 0 12px; }
+  .options { display: grid; gap: 8px; }
+
+  .option {
+    width: 100%;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .option[aria-disabled="true"] { cursor: default; }
+  .option.correct { border-color: #27774c; background: #e4f4e9; }
+  .option.incorrect { border-color: #a94b43; background: #fff0ed; }
+
+  .feedback:not(:empty) {
+    margin-top: 12px;
+    padding: 12px;
+    background: var(--soft);
+    border-radius: 8px;
+  }
+
+  .retry { margin-top: 10px; }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  [hidden] { display: none !important; }
+
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; padding: 15px; gap: 16px; }
+    .hero { padding: 24px 16px; }
+    nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    nav h2 { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to study guide</a>
+
+<header>
+  <div class="hero">
+    <div class="course">BAYLOR UNIVERSITY · NUTR 2351 · EXAM 4</div>
+    <h1>Chapter 16 — Nutrition and Fitness</h1>
+    <p>Review exercise energy systems, training principles, heart rate,
+       and recovery nutrition.</p>
+    <p>
+      <a href="chapter15.html">← Chapter 15 — Weight Management</a>
+    </p>
+    <p id="progress-text" role="status">Loading practice progress…</p>
+    <progress id="progress"
+              aria-label="Questions answered correctly"
+              value="0"></progress>
+  </div>
+</header>
+
+<div class="layout">
+  <nav id="navigation" aria-labelledby="navigation-title">
+    <h2 id="navigation-title">Study sections</h2>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <article class="panel" aria-labelledby="section-title">
+      <h2 id="section-title" tabindex="-1"></h2>
+      <p class="muted" id="section-progress"></p>
+      <div class="lesson" id="lesson"></div>
+      <h3>Practice questions</h3>
+      <div id="questions"></div>
+
+      <div class="controls">
+        <button class="secondary" id="previous" type="button">
+          ← Previous section
+        </button>
+        <button class="primary" id="next" type="button">
+          Next section →
+        </button>
+      </div>
+    </article>
+
+    <p class="muted" id="storage-note">
+      Progress is saved in this browser for self-study and is not submitted
+      to Canvas.
+    </p>
+    <button class="secondary" id="reset" type="button">
+      Reset all practice
+    </button>
+
+    <noscript>
+      <p>Enable JavaScript to use the study sections and practice questions.</p>
+    </noscript>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+const sections = [
+  {
+    name: "Aerobic & Anaerobic Energy",
+    lesson: `
+      <h3>ATP supplies energy for muscle contraction</h3>
+      <p>Muscle cells continually regenerate ATP as exercise continues.
+      Several energy systems contribute at the same time. Their relative
+      contributions change with exercise intensity and duration.</p>
+      <ul>
+        <li><strong>Aerobic exercise</strong> involves sustained activity
+        using large muscle groups, such as continuous walking, jogging,
+        swimming, or cycling. Oxygen supports oxidative ATP production.</li>
+        <li><strong>Anaerobic energy production</strong> supplies ATP
+        rapidly without directly requiring oxygen in those reactions.
+        Stored ATP and phosphocreatine are especially important during
+        the first seconds of a maximal effort.</li>
+        <li><strong>Anaerobic glycolysis</strong> rapidly uses glucose to
+        support intense exercise as the effort continues.</li>
+        <li><strong>For the exam</strong>, associate sustained,
+        oxygen-supported exercise with aerobic activity. Associate the
+        first seconds of an intense effort with anaerobic energy supply.</li>
+      </ul>`,
+    questions: [
+      {
+        id: "aerobic",
+        prompt: "Which activity best illustrates sustained aerobic exercise?",
+        options: [
+          "A single maximal jump",
+          "Continuous moderate cycling for 30 minutes",
+          "A maximal lift lasting two seconds",
+          "A five-second all-out sprint"
+        ],
+        answer: 1,
+        hint: "Look for continuous activity lasting long enough for oxidative energy production to contribute substantially.",
+        explanation: "Continuous moderate cycling uses large muscle groups and relies heavily on oxygen-supported ATP production."
+      },
+      {
+        id: "anaerobic-start",
+        prompt: "Which energy supply is especially important during the first few seconds of an all-out sprint?",
+        options: [
+          "Fat oxidation alone",
+          "Protein oxidation alone",
+          "Stored ATP and phosphocreatine",
+          "Newly digested dietary fiber"
+        ],
+        answer: 2,
+        hint: "Think about the rapidly available energy already present in muscle.",
+        explanation: "Stored ATP and phosphocreatine provide energy rapidly during the first seconds of maximal effort."
+      },
+      {
+        id: "systems",
+        prompt: "How do the body's energy systems contribute during exercise?",
+        options: [
+          "They overlap, with their relative contributions changing.",
+          "Only one system operates during any activity.",
+          "Aerobic metabolism begins only after anaerobic metabolism stops.",
+          "The same system supplies the same proportion at every intensity."
+        ],
+        answer: 0,
+        hint: "Intensity and duration change the balance among systems.",
+        explanation: "Energy systems overlap. Intensity and duration influence how much each contributes."
+      }
+    ]
+  },
+  {
+    name: "Exercise Fuels & Fatigue",
+    lesson: `
+      <ul>
+        <li><strong>Carbohydrate</strong> supplies glucose and stored
+        glycogen. It is especially important as exercise intensity rises.</li>
+        <li><strong>Fat</strong> generally supplies a larger proportion
+        of energy during lower-intensity aerobic activity. Both fat and
+        carbohydrate can contribute during prolonged exercise.</li>
+        <li><strong>Glycogen</strong> is stored in muscle and liver.
+        Muscle glycogen supports working muscle, while liver glycogen
+        helps maintain blood glucose.</li>
+        <li><strong>Hitting the wall</strong> refers to marked fatigue and
+        reduced performance during prolonged exercise when carbohydrate
+        availability becomes very low, especially as glycogen stores
+        become depleted.</li>
+        <li><strong>Muscle pH</strong> decreases when hydrogen ion
+        concentration increases. Changes in the muscle environment
+        during intense exercise can contribute to fatigue.</li>
+      </ul>
+      <p class="example"><strong>Exam wording</strong><br>
+      The exam links intense exercise, excess hydrogen ions, lower pH,
+      and fatigue. Lactate can be used as fuel, and its production does
+      not itself cause the increase in acidity. Fatigue has multiple
+      contributing mechanisms.</p>`,
+    questions: [
+      {
+        id: "fat-fuel",
+        prompt: "Which fuel generally supplies a greater proportion of energy during lower-intensity aerobic activity?",
+        options: ["Vitamins", "Protein", "Fat", "Minerals"],
+        answer: 2,
+        hint: "Think of the fuel emphasized for lower-intensity, prolonged activity.",
+        explanation: "Fat generally contributes a greater proportion of energy at lower aerobic intensities, alongside carbohydrate."
+      },
+      {
+        id: "glycogen",
+        prompt: "Which description correctly identifies glycogen?",
+        options: [
+          "A hormone released before meals",
+          "The stored form of carbohydrate in muscle and liver",
+          "The main structural protein in muscle",
+          "A type of essential fatty acid"
+        ],
+        answer: 1,
+        hint: "Think about the storage form of glucose.",
+        explanation: "Glycogen stores carbohydrate in muscle and liver for later use."
+      },
+      {
+        id: "wall",
+        prompt: "An endurance athlete develops marked fatigue late in an event as carbohydrate availability falls. Which explanation best fits hitting the wall?",
+        options: [
+          "A sudden increase in vitamin stores",
+          "A complete loss of body fat",
+          "An increase in oxygen storage",
+          "Substantial depletion of glycogen stores"
+        ],
+        answer: 3,
+        hint: "Identify the stored carbohydrate that can become depleted.",
+        explanation: "Low carbohydrate availability and substantial glycogen depletion can limit sustained endurance performance."
+      },
+      {
+        id: "ph",
+        prompt: "What happens to muscle pH when hydrogen ion concentration increases?",
+        options: [
+          "pH decreases.",
+          "pH increases.",
+          "pH always stays constant.",
+          "pH becomes unrelated to acidity."
+        ],
+        answer: 0,
+        hint: "A higher hydrogen ion concentration means greater acidity.",
+        explanation: "As hydrogen ion concentration increases, pH falls."
+      }
+    ]
+  },
+  {
+    name: "Target Heart Rate",
+    lesson: `
+      <h3>Use the classroom heart-rate calculation</h3>
+      <ol>
+        <li>Estimate maximum heart rate as <strong>220 − age</strong>.</li>
+        <li>Multiply that estimate by the lower target percentage.</li>
+        <li>Multiply the same estimate by the upper target percentage.</li>
+        <li>Convert a pulse counted for 15 seconds to beats per minute
+        by multiplying by <strong>4</strong>.</li>
+        <li>Compare the measured rate with both ends of the target range.</li>
+      </ol>
+      <p class="example"><strong>Worked example</strong><br>
+      A 30-year-old uses a target of 75%–85% of estimated maximum.<br>
+      Estimated maximum = 220 − 30 = 190 beats/minute.<br>
+      Lower end = 190 × 0.75 = 142.5 beats/minute.<br>
+      Upper end = 190 × 0.85 = 161.5 beats/minute.<br>
+      A count of 38 beats in 15 seconds gives 38 × 4 = 152 beats/minute,
+      which is within the calculated range.</p>
+      <p>The 220 − age formula provides an estimate. For these exam
+      exercises, apply the stated percentages directly to that estimate.</p>`,
+    questions: [
+      {
+        id: "max-hr",
+        prompt: "Using 220 − age, what is the estimated maximum heart rate for a 40-year-old?",
+        options: ["160 beats/minute", "180 beats/minute", "200 beats/minute", "220 beats/minute"],
+        answer: 1,
+        hint: "Subtract 40 from 220.",
+        explanation: "220 − 40 = 180 beats/minute."
+      },
+      {
+        id: "pulse",
+        prompt: "A person counts 36 beats in 15 seconds. What is the heart rate in beats per minute?",
+        options: ["108", "120", "144", "180"],
+        answer: 2,
+        hint: "There are four 15-second intervals in one minute.",
+        explanation: "36 × 4 = 144 beats/minute."
+      },
+      {
+        id: "target-range",
+        prompt: "A 20-year-old uses a target of 75%–85% of estimated maximum heart rate. Which range results?",
+        options: [
+          "120–140 beats/minute",
+          "130–150 beats/minute",
+          "140–160 beats/minute",
+          "150–170 beats/minute"
+        ],
+        answer: 3,
+        hint: "Calculate 220 − 20, then multiply by 0.75 and 0.85.",
+        explanation: "Estimated maximum is 200. The range is 200 × 0.75 to 200 × 0.85, or 150–170 beats/minute."
+      },
+      {
+        id: "target-compare",
+        prompt: "A 40-year-old has a calculated target of 135–153 beats/minute and counts 30 beats in 15 seconds. Where is the measured rate?",
+        options: [
+          "Below the target range",
+          "Within the target range",
+          "Above the target range",
+          "Exactly at the upper end"
+        ],
+        answer: 0,
+        hint: "Convert the count to beats per minute before comparing.",
+        explanation: "30 × 4 = 120 beats/minute, which is below 135–153."
+      }
+    ]
+  },
+  {
+    name: "FITT & Progressive Overload",
+    lesson: `
+      <h3>FITT describes an exercise program</h3>
+      <ul>
+        <li><strong>Frequency</strong> — how often exercise occurs,
+        such as the number of sessions per week.</li>
+        <li><strong>Intensity</strong> — how hard the activity is,
+        such as effort level or a target heart-rate range.</li>
+        <li><strong>Time</strong> — how long a session lasts.</li>
+        <li><strong>Type</strong> — the activity performed, such as
+        swimming, cycling, or resistance training.</li>
+      </ul>
+      <h3>Progressive overload</h3>
+      <p>Progressive overload gradually increases training demands
+      as the body adapts. Changes can involve frequency, intensity,
+      time, or type.</p>
+      <p class="example"><strong>Application</strong><br>
+      Increasing a walk from 20 minutes to 25 minutes changes time.
+      Increasing resistance on a stationary bicycle changes intensity.
+      Adding a weekly session changes frequency.</p>`,
+    questions: [
+      {
+        id: "fitt",
+        prompt: "What does FITT stand for?",
+        options: [
+          "Fitness, intervals, training, and tempo",
+          "Frequency, intensity, time, and type",
+          "Frequency, intervals, torque, and training",
+          "Force, intensity, time, and tempo"
+        ],
+        answer: 1,
+        hint: "Think how often, how hard, how long, and which activity.",
+        explanation: "FITT stands for frequency, intensity, time, and type."
+      },
+      {
+        id: "frequency",
+        prompt: "A student increases cycling from two sessions per week to three. Which FITT component changes?",
+        options: ["Intensity", "Type", "Frequency", "Time"],
+        answer: 2,
+        hint: "The number of sessions per week changes.",
+        explanation: "Frequency describes how often exercise occurs."
+      },
+      {
+        id: "intensity",
+        prompt: "A cyclist keeps the same session length but increases the resistance. Which FITT component changes most directly?",
+        options: ["Type", "Time", "Frequency", "Intensity"],
+        answer: 3,
+        hint: "Consider how hard the exercise becomes.",
+        explanation: "Greater resistance increases the intensity of the activity."
+      },
+      {
+        id: "overload",
+        prompt: "Which example best illustrates progressive overload?",
+        options: [
+          "Gradually increasing exercise demands as fitness improves",
+          "Repeating exactly the same workload indefinitely",
+          "Increasing every training demand sharply in one session",
+          "Replacing all activity with rest after adaptation"
+        ],
+        answer: 0,
+        hint: "Look for a gradual increase in challenge over time.",
+        explanation: "Progressive overload increases demands gradually to support further adaptation."
+      }
+    ]
+  },
+  {
+    name: "Recovery Nutrition",
+    lesson: `
+      <ul>
+        <li><strong>Carbohydrate after exercise</strong> helps replenish
+        glycogen used during activity.</li>
+        <li><strong>Protein after exercise</strong> provides amino acids
+        that support muscle repair and remodeling.</li>
+        <li><strong>For this exam</strong>, remember the
+        <strong>4:1 carbohydrate-to-protein ratio</strong> shown in
+        question 60. This means four grams of carbohydrate for each gram
+        of protein.</li>
+        <li>To calculate carbohydrate for a 4:1 exercise, multiply
+        protein grams by 4. To calculate protein, divide carbohydrate
+        grams by 4.</li>
+      </ul>
+      <p class="example"><strong>Worked example</strong><br>
+      60 g carbohydrate and 15 g protein gives 60 ÷ 15 = 4,
+      so the ratio is 4:1.<br>
+      The ratio compares grams of the nutrients. Individual recovery
+      needs depend on the exercise session and overall intake.</p>`,
+    questions: [
+      {
+        id: "recovery-role",
+        prompt: "Which pairing correctly describes recovery nutrition?",
+        options: [
+          "Carbohydrate supports tissue repair; protein becomes glycogen directly.",
+          "Carbohydrate supplies amino acids; protein supplies dietary fiber.",
+          "Carbohydrate helps replenish glycogen; protein supports muscle repair.",
+          "Carbohydrate prevents adaptation; protein replaces oxygen."
+        ],
+        answer: 2,
+        hint: "Match stored carbohydrate with carbohydrate intake and amino acids with protein intake.",
+        explanation: "Carbohydrate helps restore glycogen, and protein supplies amino acids for muscle repair and remodeling."
+      },
+      {
+        id: "ratio",
+        prompt: "Which combination matches the exam's 4:1 carbohydrate-to-protein ratio?",
+        options: [
+          "20 g carbohydrate and 80 g protein",
+          "80 g carbohydrate and 20 g protein",
+          "40 g carbohydrate and 40 g protein",
+          "20 g carbohydrate and 40 g protein"
+        ],
+        answer: 1,
+        hint: "Divide carbohydrate grams by protein grams and look for 4.",
+        explanation: "80 ÷ 20 = 4. There are four grams of carbohydrate for every gram of protein."
+      },
+      {
+        id: "ratio-calc",
+        prompt: "Using a 4:1 carbohydrate-to-protein ratio, how much carbohydrate pairs with 18 g of protein?",
+        options: ["4.5 g", "18 g", "36 g", "72 g"],
+        answer: 3,
+        hint: "Multiply the protein grams by 4.",
+        explanation: "18 × 4 = 72 g carbohydrate."
+      }
+    ]
+  }
+];
+
+const byId = (id) => document.getElementById(id);
+const navigation = byId("navigation");
+const title = byId("section-title");
+const sectionProgress = byId("section-progress");
+const questionContainer = byId("questions");
+const progress = byId("progress");
+const progressText = byId("progress-text");
+const previous = byId("previous");
+const next = byId("next");
+const allQuestions = sections.flatMap((section) => section.questions);
+const storageKey = "baylor-nutr2351-chapter16-v1";
+
+let answers = {};
+let sectionIndex = 0;
+
+function showStorageNotice() {
+  byId("storage-note").textContent =
+    "Saved progress is unavailable in this browser. Your answers remain available while this page stays open.";
+}
+
+try {
+  const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
+
+  if (saved && typeof saved === "object") {
+    if (Number.isInteger(saved.section) && sections[saved.section]) {
+      sectionIndex = saved.section;
+    }
+
+    for (const question of allQuestions) {
+      const choice = saved.answers?.[question.id];
+
+      if (
+        Number.isInteger(choice) &&
+        choice >= 0 &&
+        choice < question.options.length
+      ) {
+        answers[question.id] = choice;
+      }
+    }
+  }
+} catch {
+  showStorageNotice();
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify({ section: sectionIndex, answers })
+    );
+  } catch {
+    showStorageNotice();
+  }
+}
+
+function countCorrect(list) {
+  return list.filter(
+    (question) => answers[question.id] === question.answer
+  ).length;
+}
+
+const sectionButtons = sections.map((section, index) => {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.addEventListener("click", () => showSection(index, true));
+  navigation.append(button);
+  return button;
+});
+
+function updateProgress() {
+  const correct = countCorrect(allQuestions);
+  const total = allQuestions.length;
+  const percentage = Math.round(correct / total * 100);
+
+  progress.max = total;
+  progress.value = correct;
+  progressText.textContent =
+    `${correct} of ${total} correct (${percentage}%)`;
+
+  const current = sections[sectionIndex];
+
+  sectionProgress.textContent =
+    `${countCorrect(current.questions)} of ${current.questions.length} correct in this section`;
+
+  sectionButtons.forEach((button, index) => {
+    const section = sections[index];
+
+    button.textContent =
+      `${section.name} (${countCorrect(section.questions)}/${section.questions.length})`;
+
+    if (index === sectionIndex) {
+      button.setAttribute("aria-current", "true");
+    } else {
+      button.removeAttribute("aria-current");
+    }
+  });
+}
+
+function renderQuestion(question, number) {
+  const card = document.createElement("section");
+  card.className = "question";
+
+  const heading = document.createElement("h3");
+  heading.id = `prompt-${question.id}`;
+  heading.textContent = `${number}. ${question.prompt}`;
+
+  const options = document.createElement("div");
+  options.className = "options";
+  options.setAttribute("role", "group");
+  options.setAttribute("aria-labelledby", heading.id);
+
+  const feedback = document.createElement("div");
+  feedback.id = `feedback-${question.id}`;
+  feedback.className = "feedback";
+  feedback.setAttribute("role", "status");
+
+  const retry = document.createElement("button");
+  retry.type = "button";
+  retry.className = "secondary retry";
+  retry.textContent = "Try again";
+  retry.setAttribute("aria-label", `Try question ${number} again`);
+
+  const optionButtons = question.options.map((text, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "option";
+    button.textContent = `${String.fromCharCode(65 + index)}. ${text}`;
+
+    button.addEventListener("click", () => {
+      if (answers[question.id] !== undefined) return;
+
+      answers[question.id] = index;
+      paintAnswer();
+      updateProgress();
+      saveProgress();
+    });
+
+    options.append(button);
+    return button;
+  });
+
+  function paintAnswer() {
+    const choice = answers[question.id];
+    const answered = choice !== undefined;
+    const correct = choice === question.answer;
+
+    optionButtons.forEach((button, index) => {
+      const selected = choice === index;
+
+      button.classList.toggle("correct", selected && correct);
+      button.classList.toggle("incorrect", selected && !correct);
+
+      if (answered) {
+        button.setAttribute("aria-disabled", "true");
+      } else {
+        button.removeAttribute("aria-disabled");
+      }
+
+      if (selected) {
+        button.setAttribute("aria-describedby", feedback.id);
+      } else {
+        button.removeAttribute("aria-describedby");
+      }
+    });
+
+    retry.hidden = !answered || correct;
+    feedback.textContent = "";
+
+    if (answered) {
+      feedback.textContent = correct
+        ? `Correct. ${question.explanation}`
+        : `Try again. ${question.hint}`;
+    }
+  }
+
+  retry.addEventListener("click", () => {
+    delete answers[question.id];
+    paintAnswer();
+    updateProgress();
+    saveProgress();
+    optionButtons[0].focus();
+  });
+
+  card.append(heading, options, feedback, retry);
+  paintAnswer();
+  return card;
+}
+
+function showSection(index, moveFocus = false) {
+  if (!Number.isInteger(index) || !sections[index]) return;
+
+  sectionIndex = index;
+  const section = sections[index];
+
+  title.textContent = section.name;
+
+  // Lesson markup is authored in this file.
+  byId("lesson").innerHTML = section.lesson;
+
+  questionContainer.replaceChildren(
+    ...section.questions.map(
+      (question, position) => renderQuestion(question, position + 1)
+    )
+  );
+
+  previous.disabled = index === 0;
+  next.disabled = index === sections.length - 1;
+  updateProgress();
+
+  if (moveFocus) {
+    saveProgress();
+    title.focus();
+    title.scrollIntoView({ block: "start" });
+  }
+}
+
+previous.addEventListener("click", () => {
+  showSection(sectionIndex - 1, true);
+});
+
+next.addEventListener("click", () => {
+  showSection(sectionIndex + 1, true);
+});
+
+byId("reset").addEventListener("click", () => {
+  const confirmed = window.confirm(
+    "Clear all Chapter 16 answers and start again?"
+  );
+
+  if (!confirmed) return;
+
+  answers = {};
+  showSection(0, true);
+});
+
+showSection(sectionIndex);
+</script>
+</body>
+</html>
